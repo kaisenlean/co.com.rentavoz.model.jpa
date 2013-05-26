@@ -1,0 +1,40 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package co.com.rentavoz.logica.jpa.fachadas;
+
+import co.com.rentavoz.logica.jpa.entidades.Departamento;
+import java.util.List;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+/**
+ *
+ * @author ejody
+ */
+@Stateless
+public class DepartamentoFacade extends AbstractFacade<Departamento> {
+    @PersistenceContext(unitName = "com.innovate.rentavozPU")
+    private EntityManager em;
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
+
+    public DepartamentoFacade() {
+        super(Departamento.class);
+    }
+
+    public List<Departamento> findByCriterio(String criterio) {
+    Query q = getEntityManager().createQuery("SELECT d FROM Departamento d WHERE d.depNombre LIKE :criterio").setParameter("criterio", "%"+criterio+"%");
+    return  q.getResultList();
+    
+    }
+
+ 
+    
+}
