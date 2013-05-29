@@ -224,7 +224,7 @@ public class Tercero implements Serializable {
     
     @Override
     public String toString() {
-        return "com.invte.rentavoz.logica.entidades.Tercero[ idTecero=" + idTecero + " ]";
+        return terNombre==null?"":terNombre+" "+terApellidos==null?"":terApellidos;
     }
     
 }
