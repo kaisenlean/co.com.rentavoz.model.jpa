@@ -185,7 +185,7 @@ public class Empresa implements Serializable {
 
     @Override
     public String toString() {
-        return "com.invte.rentavoz.logica.entidades.Empresa[ idEmpresa=" + idEmpresa + " ]";
+        return empNombre +" [ "+empNit+" ]";
     }
     
 }

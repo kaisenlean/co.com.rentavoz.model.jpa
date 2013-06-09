@@ -4,6 +4,8 @@
  */
 package co.com.rentavoz.logica.jpa.fachadas;
 
+import java.util.List;
+
 import co.com.rentavoz.logica.jpa.entidades.Plan;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -41,4 +43,17 @@ public class PlanFacade extends AbstractFacade<Plan> {
         
         return resultado;
     }
+
+	/**
+	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	* @date 3/06/2013
+	* @param criterio
+	* @return
+	*/
+	public List<Plan> findByCriterio(String criterio) {
+		Query q = getEntityManager().createQuery("SELECT p FROM Plan p WHERE p.plaNombre LIKE :criterio");
+		q.setParameter("criterio", "%"+criterio+"%");
+		return q.getResultList();
+		
+	}
 }

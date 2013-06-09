@@ -51,6 +51,9 @@ public class Menu implements Serializable {
     @Size(max = 255)
     @Column(name = "url")
     private String url;
+    @Size(max = 100)
+    @Column(name = "padre")
+    private String padre;
 
     public Menu() {
     }
@@ -101,6 +104,26 @@ public class Menu implements Serializable {
         this.url = url;
     }
 
+    
+    /**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the padre
+	 */
+	public String getPadre() {
+		return padre;
+	}
+	
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param padre the padre to set
+	 */
+	public void setPadre(String padre) {
+		this.padre = padre;
+	}
+	
+	
     @Override
     public int hashCode() {
         int hash = 0;

@@ -224,7 +224,7 @@ public class Tercero implements Serializable {
     
     @Override
     public String toString() {
-        return terNombre==null?"":terNombre+" "+terApellidos==null?"":terApellidos;
+        return terNombre+" "+terApellidos+" [ "+terDocumento+" ]";
     }
     
 }

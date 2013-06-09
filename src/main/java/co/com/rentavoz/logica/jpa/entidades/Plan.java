@@ -231,7 +231,7 @@ public class Plan implements Serializable {
 
     @Override
     public String toString() {
-        return "com.invte.rentavoz.logica.entidades.Plan[ idPlan=" + idPlan + " ]";
+        return plaNombre;
     }
     
 }

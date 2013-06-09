@@ -43,7 +43,7 @@ public class Venta implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "idVenta")
     private Integer idVenta;
     @Basic(optional = false)
@@ -65,12 +65,15 @@ public class Venta implements Serializable {
     @NotNull
     @Column(name = "venSaldo")
     private BigDecimal venSaldo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ventaidVenta")
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "ventaidVenta")
     private List<Pago> pagoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ventaidVenta")
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "ventaidVenta")
     private List<TerceroVenta> terceroVentaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ventaidVenta")
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "ventaidVenta")
     private List<VentaLinea> ventaLineaList;
+    @Basic(optional = true)
+    @Column(name = "observacion")
+    private String observacion;
 
     public Venta() {
     }
@@ -154,6 +157,25 @@ public class Venta implements Serializable {
         this.ventaLineaList = ventaLineaList;
     }
 
+    
+    /**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the observacion
+	 */
+	public String getObservacion() {
+		return observacion;
+	}
+	
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param observacion the observacion to set
+	 */
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
+	
     @Override
     public int hashCode() {
         int hash = 0;

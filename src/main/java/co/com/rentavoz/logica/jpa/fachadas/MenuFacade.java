@@ -34,4 +34,9 @@ public class MenuFacade extends AbstractFacade<Menu> {
 	public List<Menu> findTodos() {
        return getEntityManager().createQuery("SELECT m FROM Menu m ").getResultList();
     }
+      
+      @SuppressWarnings("unchecked")
+  	public List<Menu> findTodosByPadre(String padre) {
+         return getEntityManager().createQuery("SELECT m FROM Menu m  WHERE m.padre = :padre").setParameter("padre", padre).getResultList();
+      }
 }

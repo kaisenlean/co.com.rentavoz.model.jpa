@@ -22,6 +22,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -75,8 +76,14 @@ public class Linea implements Serializable {
     @JoinColumn(name = "Empresa_idEmpresa", referencedColumnName = "idEmpresa")
     @ManyToOne(optional = false)
     private Empresa empresaidEmpresa;
+    @JoinColumn(name = "plan", referencedColumnName = "idPlan")
+    @ManyToOne(optional = true)
+    private Plan plan;
+    @Transient
+    private boolean seleccionado;
 
     public Linea() {
+    	plan=new Plan();
     }
 
     public Linea(Integer idLinea) {
@@ -174,6 +181,42 @@ public class Linea implements Serializable {
         this.empresaidEmpresa = empresaidEmpresa;
     }
 
+    /**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the plan
+	 */
+	public Plan getPlan() {
+		return plan;
+	}
+	
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param plan the plan to set
+	 */
+	public void setPlan(Plan plan) {
+		this.plan = plan;
+	}
+	
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the seleccionado
+	 */
+	public boolean isSeleccionado() {
+		return seleccionado;
+	}
+	
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param seleccionado the seleccionado to set
+	 */
+	public void setSeleccionado(boolean seleccionado) {
+		this.seleccionado = seleccionado;
+	}
+	
     @Override
     public int hashCode() {
         int hash = 0;

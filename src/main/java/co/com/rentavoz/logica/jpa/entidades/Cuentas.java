@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -62,6 +64,9 @@ public class Cuentas implements Serializable {
     private List<Pago> pagoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentasidCuentas")
     private List<Gasto> gastoList;
+    @JoinColumn(name="banco" ,referencedColumnName="idBanco")
+    @ManyToOne
+    private Banco banco;
 
     public Cuentas() {
     }
@@ -127,6 +132,23 @@ public class Cuentas implements Serializable {
         this.gastoList = gastoList;
     }
 
+    /**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the banco
+	 */
+	public Banco getBanco() {
+		return banco;
+	}
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param banco the banco to set
+	 */
+	public void setBanco(Banco banco) {
+		this.banco = banco;
+	}
+	
     @Override
     public int hashCode() {
         int hash = 0;

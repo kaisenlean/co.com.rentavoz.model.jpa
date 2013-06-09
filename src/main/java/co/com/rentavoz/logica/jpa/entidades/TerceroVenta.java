@@ -34,7 +34,6 @@ public class TerceroVenta implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "idTerVen")
     private Integer idTerVen;
     @Basic(optional = false)
@@ -51,9 +50,20 @@ public class TerceroVenta implements Serializable {
     public TerceroVenta() {
     }
 
+    public TerceroVenta(Tercero tercero) {
+        this.terceroidTecero = tercero;
+    }
+ 
+       public TerceroVenta(Tercero tercero,Venta venta) {
+        this.terceroidTecero = tercero;
+        this.ventaidVenta=venta;
+        this.terVenTipo=0;
+    }
+    
     public TerceroVenta(Integer idTerVen) {
         this.idTerVen = idTerVen;
     }
+
 
     public TerceroVenta(Integer idTerVen, int terVenTipo) {
         this.idTerVen = idTerVen;

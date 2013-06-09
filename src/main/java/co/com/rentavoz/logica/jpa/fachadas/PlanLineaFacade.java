@@ -4,10 +4,13 @@
  */
 package co.com.rentavoz.logica.jpa.fachadas;
 
+import co.com.rentavoz.logica.jpa.entidades.Linea;
+import co.com.rentavoz.logica.jpa.entidades.Plan;
 import co.com.rentavoz.logica.jpa.entidades.PlanLinea;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,4 +30,20 @@ public class PlanLineaFacade extends AbstractFacade<PlanLinea> {
         super(PlanLinea.class);
     }
     
+    
+    public void desactivarTodosPlanesLineas(Linea l){
+    	Query q = getEntityManager().createQuery("UPDATE PlanLinea pl SET pl.plaEstado=0 WHERE pl.lineaidLinea = :linea");
+    	q.setParameter("linea", l);
+    	q.executeUpdate();
+    	
+    }
+    
+    
+    public void activarPorLineaYPlan(Linea l,Plan p){
+    	Query q = getEntityManager().createQuery("UPDATE PlanLinea pl SET pl.plaEstado=1 WHERE pl.lineaidLinea = :linea AND pl.planidPlan = :plan");
+    	q.setParameter("linea", l);
+    	q.setParameter("plan", p);
+    	q.executeUpdate();
+    	
+    }
 }

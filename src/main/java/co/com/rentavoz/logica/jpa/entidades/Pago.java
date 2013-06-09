@@ -40,7 +40,7 @@ public class Pago implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
+
     @Column(name = "idPago")
     private Integer idPago;
     @Basic(optional = false)
@@ -60,7 +60,7 @@ public class Pago implements Serializable {
     @ManyToOne(optional = false)
     private TipoPago tipoPagoidTipoPago;
     @JoinColumn(name = "Cuentas_idCuentas", referencedColumnName = "idCuentas")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Cuentas cuentasidCuentas;
     @JoinColumn(name = "Venta_idVenta", referencedColumnName = "idVenta")
     @ManyToOne(optional = false)
