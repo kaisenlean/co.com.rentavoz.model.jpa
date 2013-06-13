@@ -63,9 +63,9 @@ public class Simcard implements Serializable {
     private Date fecha;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "simcardidSimcard")
     private List<SucursalSimcard> sucursalSimcardList;
-    @JoinColumn(name = "Linea_idLinea", referencedColumnName = "idLinea")
-    @ManyToOne(optional = false)
-    private Linea lineaidLinea;
+    @OneToMany(mappedBy = "simcard")
+    private List<Linea> lineas;
+
 
     public Simcard() {
     }
@@ -81,6 +81,16 @@ public class Simcard implements Serializable {
         this.fecha = fecha;
     }
 
+    @XmlTransient
+    public List<Linea> getLineas() {
+        return lineas;
+    }
+
+    public void setLineas(List<Linea> lineas) {
+        this.lineas = lineas;
+    }
+
+   
     public Integer getIdSimcard() {
         return idSimcard;
     }
@@ -122,13 +132,6 @@ public class Simcard implements Serializable {
         this.sucursalSimcardList = sucursalSimcardList;
     }
 
-    public Linea getLineaidLinea() {
-        return lineaidLinea;
-    }
-
-    public void setLineaidLinea(Linea lineaidLinea) {
-        this.lineaidLinea = lineaidLinea;
-    }
 
     @Override
     public int hashCode() {

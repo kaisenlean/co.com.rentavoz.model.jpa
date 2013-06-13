@@ -79,8 +79,13 @@ public class Linea implements Serializable {
     @JoinColumn(name = "plan", referencedColumnName = "idPlan")
     @ManyToOne(optional = true)
     private Plan plan;
+    @JoinColumn(name = "simcard",referencedColumnName = "idSimcard")
+    @ManyToOne
+    private Simcard simcard;
+    
     @Transient
     private boolean seleccionado;
+    
 
     public Linea() {
     	plan=new Plan();
@@ -216,7 +221,15 @@ public class Linea implements Serializable {
 	public void setSeleccionado(boolean seleccionado) {
 		this.seleccionado = seleccionado;
 	}
-	
+
+    public Simcard getSimcard() {
+        return simcard;
+    }
+
+    public void setSimcard(Simcard simcard) {
+        this.simcard = simcard;
+    }
+   
     @Override
     public int hashCode() {
         int hash = 0;
