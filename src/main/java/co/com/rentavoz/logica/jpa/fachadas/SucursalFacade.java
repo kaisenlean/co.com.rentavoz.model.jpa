@@ -4,11 +4,13 @@
  */
 package co.com.rentavoz.logica.jpa.fachadas;
 
-import co.com.rentavoz.logica.jpa.entidades.Sucursal;
 import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import co.com.rentavoz.logica.jpa.entidades.Sucursal;
 
 /**
  *

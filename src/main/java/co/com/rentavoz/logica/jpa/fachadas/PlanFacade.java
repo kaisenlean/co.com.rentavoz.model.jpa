@@ -6,11 +6,12 @@ package co.com.rentavoz.logica.jpa.fachadas;
 
 import java.util.List;
 
-import co.com.rentavoz.logica.jpa.entidades.Plan;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import co.com.rentavoz.logica.jpa.entidades.Plan;
 
 /**
  *

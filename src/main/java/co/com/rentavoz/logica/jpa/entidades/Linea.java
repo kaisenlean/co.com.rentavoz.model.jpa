@@ -7,6 +7,7 @@ package co.com.rentavoz.logica.jpa.entidades;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -66,8 +67,7 @@ public class Linea implements Serializable {
     private List<SucursalLinea> sucursalLineaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "lineaidLinea")
     private List<PlanLinea> planLineaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lineaidLinea")
-    private List<Simcard> simcardList;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "lineaidLinea")
     private List<VentaLinea> ventaLineaList;
     @JoinColumn(name = "EstadoLinea_idEstadoLinea", referencedColumnName = "idEstadoLinea")
@@ -152,14 +152,7 @@ public class Linea implements Serializable {
         this.planLineaList = planLineaList;
     }
 
-    @XmlTransient
-    public List<Simcard> getSimcardList() {
-        return simcardList;
-    }
-
-    public void setSimcardList(List<Simcard> simcardList) {
-        this.simcardList = simcardList;
-    }
+  
 
     @XmlTransient
     public List<VentaLinea> getVentaLineaList() {

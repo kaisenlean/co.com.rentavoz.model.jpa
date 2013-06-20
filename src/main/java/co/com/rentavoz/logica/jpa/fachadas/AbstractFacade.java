@@ -5,6 +5,7 @@
 package co.com.rentavoz.logica.jpa.fachadas;
 
 import java.util.List;
+
 import javax.persistence.EntityManager;
 
 /**

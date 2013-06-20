@@ -4,14 +4,15 @@
  */
 package co.com.rentavoz.logica.jpa.fachadas;
 
-import co.com.rentavoz.logica.jpa.entidades.Ciudad;
-import co.com.rentavoz.logica.jpa.entidades.Departamento;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import co.com.rentavoz.logica.jpa.entidades.Ciudad;
+import co.com.rentavoz.logica.jpa.entidades.Departamento;
 
 /**
  *
