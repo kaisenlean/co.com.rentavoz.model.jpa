@@ -30,156 +30,153 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
+ * 
  * @author ejody
  */
 @Entity
 @Table(name = "Linea")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Linea.findAll", query = "SELECT l FROM Linea l"),
-    @NamedQuery(name = "Linea.findByIdLinea", query = "SELECT l FROM Linea l WHERE l.idLinea = :idLinea"),
-    @NamedQuery(name = "Linea.findByLinNumero", query = "SELECT l FROM Linea l WHERE l.linNumero = :linNumero"),
-    @NamedQuery(name = "Linea.findByLinCorte", query = "SELECT l FROM Linea l WHERE l.linCorte = :linCorte"),
-    @NamedQuery(name = "Linea.findByFecha", query = "SELECT l FROM Linea l WHERE l.fecha = :fecha")})
+		@NamedQuery(name = "Linea.findAll", query = "SELECT l FROM Linea l"),
+		@NamedQuery(name = "Linea.findByIdLinea", query = "SELECT l FROM Linea l WHERE l.idLinea = :idLinea"),
+		@NamedQuery(name = "Linea.findByLinNumero", query = "SELECT l FROM Linea l WHERE l.linNumero = :linNumero"),
+		@NamedQuery(name = "Linea.findByLinCorte", query = "SELECT l FROM Linea l WHERE l.linCorte = :linCorte"),
+		@NamedQuery(name = "Linea.findByFecha", query = "SELECT l FROM Linea l WHERE l.fecha = :fecha") })
 public class Linea implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "idLinea")
-    private Integer idLinea;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 11)
-    @Column(name = "linNumero")
-    private String linNumero;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "linCorte")
-    private int linCorte;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "fecha")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fecha;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lineaidLinea")
-    private List<SucursalLinea> sucursalLineaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lineaidLinea")
-    private List<PlanLinea> planLineaList;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
+	@Column(name = "idLinea")
+	private Integer idLinea;
+	@Basic(optional = false)
+	@NotNull
+	@Size(min = 1, max = 11)
+	@Column(name = "linNumero")
+	private String linNumero;
+	@Basic(optional = false)
+	@NotNull
+	@Column(name = "linCorte")
+	private int linCorte;
+	@Basic(optional = false)
+	@NotNull
+	@Column(name = "fecha")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fecha;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "lineaidLinea")
+	private List<SucursalLinea> sucursalLineaList;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "lineaidLinea")
+	private List<PlanLinea> planLineaList;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lineaidLinea")
-    private List<VentaLinea> ventaLineaList;
-    @JoinColumn(name = "EstadoLinea_idEstadoLinea", referencedColumnName = "idEstadoLinea")
-    @ManyToOne(optional = false)
-    private EstadoLinea estadoLineaidEstadoLinea;
-    @JoinColumn(name = "Empresa_idEmpresa", referencedColumnName = "idEmpresa")
-    @ManyToOne(optional = false)
-    private Empresa empresaidEmpresa;
-    @JoinColumn(name = "plan", referencedColumnName = "idPlan")
-    @ManyToOne(optional = true)
-    private Plan plan;
-    @JoinColumn(name = "simcard",referencedColumnName = "idSimcard")
-    @ManyToOne
-    private Simcard simcard;
-    
-    @Transient
-    private boolean seleccionado;
-    
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "lineaidLinea")
+	private List<VentaLinea> ventaLineaList;
+	@JoinColumn(name = "EstadoLinea_idEstadoLinea", referencedColumnName = "idEstadoLinea")
+	@ManyToOne(optional = false)
+	private EstadoLinea estadoLineaidEstadoLinea;
+	@JoinColumn(name = "Empresa_idEmpresa", referencedColumnName = "idEmpresa")
+	@ManyToOne(optional = false)
+	private Empresa empresaidEmpresa;
+	@JoinColumn(name = "plan", referencedColumnName = "idPlan")
+	@ManyToOne(optional = true)
+	private Plan plan;
+	@JoinColumn(name = "simcard", referencedColumnName = "idSimcard")
+	@ManyToOne
+	private Simcard simcard;
 
-    public Linea() {
-    	plan=new Plan();
-    }
+	@Transient
+	private boolean seleccionado;
 
-    public Linea(Integer idLinea) {
-        this.idLinea = idLinea;
-    }
+	public Linea() {
+		plan = new Plan();
+	}
 
-    public Linea(Integer idLinea, String linNumero, int linCorte, Date fecha) {
-        this.idLinea = idLinea;
-        this.linNumero = linNumero;
-        this.linCorte = linCorte;
-        this.fecha = fecha;
-    }
+	public Linea(Integer idLinea) {
+		this.idLinea = idLinea;
+	}
 
-    public Integer getIdLinea() {
-        return idLinea;
-    }
+	public Linea(Integer idLinea, String linNumero, int linCorte, Date fecha) {
+		this.idLinea = idLinea;
+		this.linNumero = linNumero;
+		this.linCorte = linCorte;
+		this.fecha = fecha;
+	}
 
-    public void setIdLinea(Integer idLinea) {
-        this.idLinea = idLinea;
-    }
+	public Integer getIdLinea() {
+		return idLinea;
+	}
 
-    public String getLinNumero() {
-        return linNumero;
-    }
+	public void setIdLinea(Integer idLinea) {
+		this.idLinea = idLinea;
+	}
 
-    public void setLinNumero(String linNumero) {
-        this.linNumero = linNumero;
-    }
+	public String getLinNumero() {
+		return linNumero;
+	}
 
-    public int getLinCorte() {
-        return linCorte;
-    }
+	public void setLinNumero(String linNumero) {
+		this.linNumero = linNumero;
+	}
 
-    public void setLinCorte(int linCorte) {
-        this.linCorte = linCorte;
-    }
+	public int getLinCorte() {
+		return linCorte;
+	}
 
-    public Date getFecha() {
-        return fecha;
-    }
+	public void setLinCorte(int linCorte) {
+		this.linCorte = linCorte;
+	}
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
+	public Date getFecha() {
+		return fecha;
+	}
 
-    @XmlTransient
-    public List<SucursalLinea> getSucursalLineaList() {
-        return sucursalLineaList;
-    }
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
 
-    public void setSucursalLineaList(List<SucursalLinea> sucursalLineaList) {
-        this.sucursalLineaList = sucursalLineaList;
-    }
+	@XmlTransient
+	public List<SucursalLinea> getSucursalLineaList() {
+		return sucursalLineaList;
+	}
 
-    @XmlTransient
-    public List<PlanLinea> getPlanLineaList() {
-        return planLineaList;
-    }
+	public void setSucursalLineaList(List<SucursalLinea> sucursalLineaList) {
+		this.sucursalLineaList = sucursalLineaList;
+	}
 
-    public void setPlanLineaList(List<PlanLinea> planLineaList) {
-        this.planLineaList = planLineaList;
-    }
+	@XmlTransient
+	public List<PlanLinea> getPlanLineaList() {
+		return planLineaList;
+	}
 
-  
+	public void setPlanLineaList(List<PlanLinea> planLineaList) {
+		this.planLineaList = planLineaList;
+	}
 
-    @XmlTransient
-    public List<VentaLinea> getVentaLineaList() {
-        return ventaLineaList;
-    }
+	@XmlTransient
+	public List<VentaLinea> getVentaLineaList() {
+		return ventaLineaList;
+	}
 
-    public void setVentaLineaList(List<VentaLinea> ventaLineaList) {
-        this.ventaLineaList = ventaLineaList;
-    }
+	public void setVentaLineaList(List<VentaLinea> ventaLineaList) {
+		this.ventaLineaList = ventaLineaList;
+	}
 
-    public EstadoLinea getEstadoLineaidEstadoLinea() {
-        return estadoLineaidEstadoLinea;
-    }
+	public EstadoLinea getEstadoLineaidEstadoLinea() {
+		return estadoLineaidEstadoLinea;
+	}
 
-    public void setEstadoLineaidEstadoLinea(EstadoLinea estadoLineaidEstadoLinea) {
-        this.estadoLineaidEstadoLinea = estadoLineaidEstadoLinea;
-    }
+	public void setEstadoLineaidEstadoLinea(EstadoLinea estadoLineaidEstadoLinea) {
+		this.estadoLineaidEstadoLinea = estadoLineaidEstadoLinea;
+	}
 
-    public Empresa getEmpresaidEmpresa() {
-        return empresaidEmpresa;
-    }
+	public Empresa getEmpresaidEmpresa() {
+		return empresaidEmpresa;
+	}
 
-    public void setEmpresaidEmpresa(Empresa empresaidEmpresa) {
-        this.empresaidEmpresa = empresaidEmpresa;
-    }
+	public void setEmpresaidEmpresa(Empresa empresaidEmpresa) {
+		this.empresaidEmpresa = empresaidEmpresa;
+	}
 
-    /**
+	/**
 	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
 	 * @date 2/06/2013
 	 * @return the plan
@@ -187,16 +184,17 @@ public class Linea implements Serializable {
 	public Plan getPlan() {
 		return plan;
 	}
-	
+
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param plan the plan to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param plan
+	 *            the plan to set
 	 */
 	public void setPlan(Plan plan) {
 		this.plan = plan;
 	}
-	
+
 	/**
 	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
 	 * @date 2/06/2013
@@ -205,47 +203,51 @@ public class Linea implements Serializable {
 	public boolean isSeleccionado() {
 		return seleccionado;
 	}
-	
+
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param seleccionado the seleccionado to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param seleccionado
+	 *            the seleccionado to set
 	 */
 	public void setSeleccionado(boolean seleccionado) {
 		this.seleccionado = seleccionado;
 	}
 
-    public Simcard getSimcard() {
-        return simcard;
-    }
+	public Simcard getSimcard() {
+		return simcard;
+	}
 
-    public void setSimcard(Simcard simcard) {
-        this.simcard = simcard;
-    }
-   
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idLinea != null ? idLinea.hashCode() : 0);
-        return hash;
-    }
+	public void setSimcard(Simcard simcard) {
+		this.simcard = simcard;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Linea)) {
-            return false;
-        }
-        Linea other = (Linea) object;
-        if ((this.idLinea == null && other.idLinea != null) || (this.idLinea != null && !this.idLinea.equals(other.idLinea))) {
-            return false;
-        }
-        return true;
-    }
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (idLinea != null ? idLinea.hashCode() : 0);
+		return hash;
+	}
 
-    @Override
-    public String toString() {
-        return "com.invte.rentavoz.logica.entidades.Linea[ idLinea=" + idLinea + " ]";
-    }
-    
+	@Override
+	public boolean equals(Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if (!(object instanceof Linea)) {
+			return false;
+		}
+		Linea other = (Linea) object;
+		if ((this.idLinea == null && other.idLinea != null)
+				|| (this.idLinea != null && !this.idLinea.equals(other.idLinea))) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "com.invte.rentavoz.logica.entidades.Linea[ idLinea=" + idLinea
+				+ " ]";
+	}
+
 }

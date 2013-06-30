@@ -14,29 +14,30 @@ import javax.persistence.Query;
 import co.com.rentavoz.logica.jpa.entidades.Departamento;
 
 /**
- *
+ * 
  * @author ejody
  */
 @Stateless
 public class DepartamentoFacade extends AbstractFacade<Departamento> {
-    @PersistenceContext(unitName = "com.innovate.rentavozPU")
-    private EntityManager em;
+	@PersistenceContext(unitName = "com.innovate.rentavozPU")
+	private EntityManager em;
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
+	@Override
+	protected EntityManager getEntityManager() {
+		return em;
+	}
 
-    public DepartamentoFacade() {
-        super(Departamento.class);
-    }
+	public DepartamentoFacade() {
+		super(Departamento.class);
+	}
 
-    public List<Departamento> findByCriterio(String criterio) {
-    Query q = getEntityManager().createQuery("SELECT d FROM Departamento d WHERE d.depNombre LIKE :criterio").setParameter("criterio", "%"+criterio+"%");
-    return  q.getResultList();
-    
-    }
+	public List<Departamento> findByCriterio(String criterio) {
+		Query q = getEntityManager()
+				.createQuery(
+						"SELECT d FROM Departamento d WHERE d.depNombre LIKE :criterio")
+				.setParameter("criterio", "%" + criterio + "%");
+		return q.getResultList();
 
- 
-    
+	}
+
 }

@@ -11,21 +11,21 @@ import javax.persistence.PersistenceContext;
 import co.com.rentavoz.logica.jpa.entidades.SucursalSimcard;
 
 /**
- *
+ * 
  * @author ejody
  */
 @Stateless
 public class SucursalSimcardFacade extends AbstractFacade<SucursalSimcard> {
-    @PersistenceContext(unitName = "com.innovate.rentavozPU")
-    private EntityManager em;
+	@PersistenceContext(unitName = "com.innovate.rentavozPU")
+	private EntityManager em;
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
+	@Override
+	protected EntityManager getEntityManager() {
+		return em;
+	}
 
-    public SucursalSimcardFacade() {
-        super(SucursalSimcard.class);
-    }
-    
+	public SucursalSimcardFacade() {
+		super(SucursalSimcard.class);
+	}
+
 }

@@ -11,21 +11,21 @@ import javax.persistence.PersistenceContext;
 import co.com.rentavoz.logica.jpa.entidades.VentaLinea;
 
 /**
- *
+ * 
  * @author ejody
  */
 @Stateless
 public class VentaLineaFacade extends AbstractFacade<VentaLinea> {
-    @PersistenceContext(unitName = "com.innovate.rentavozPU")
-    private EntityManager em;
+	@PersistenceContext(unitName = "com.innovate.rentavozPU")
+	private EntityManager em;
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
+	@Override
+	protected EntityManager getEntityManager() {
+		return em;
+	}
 
-    public VentaLineaFacade() {
-        super(VentaLinea.class);
-    }
-    
+	public VentaLineaFacade() {
+		super(VentaLinea.class);
+	}
+
 }

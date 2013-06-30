@@ -11,21 +11,21 @@ import javax.persistence.PersistenceContext;
 import co.com.rentavoz.logica.jpa.entidades.Rol;
 
 /**
- *
+ * 
  * @author ejody
  */
 @Stateless
 public class RolFacade extends AbstractFacade<Rol> {
-    @PersistenceContext(unitName = "com.innovate.rentavozPU")
-    private EntityManager em;
+	@PersistenceContext(unitName = "com.innovate.rentavozPU")
+	private EntityManager em;
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
+	@Override
+	protected EntityManager getEntityManager() {
+		return em;
+	}
 
-    public RolFacade() {
-        super(Rol.class);
-    }
-    
+	public RolFacade() {
+		super(Rol.class);
+	}
+
 }

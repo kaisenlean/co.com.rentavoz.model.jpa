@@ -24,91 +24,95 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
+ * 
  * @author ejody
  */
 @Entity
 @Table(name = "EstadoLinea")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "EstadoLinea.findAll", query = "SELECT e FROM EstadoLinea e"),
-    @NamedQuery(name = "EstadoLinea.findByIdEstadoLinea", query = "SELECT e FROM EstadoLinea e WHERE e.idEstadoLinea = :idEstadoLinea"),
-    @NamedQuery(name = "EstadoLinea.findByEstLinNombre", query = "SELECT e FROM EstadoLinea e WHERE e.estLinNombre = :estLinNombre")})
+		@NamedQuery(name = "EstadoLinea.findAll", query = "SELECT e FROM EstadoLinea e"),
+		@NamedQuery(name = "EstadoLinea.findByIdEstadoLinea", query = "SELECT e FROM EstadoLinea e WHERE e.idEstadoLinea = :idEstadoLinea"),
+		@NamedQuery(name = "EstadoLinea.findByEstLinNombre", query = "SELECT e FROM EstadoLinea e WHERE e.estLinNombre = :estLinNombre") })
 public class EstadoLinea implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "idEstadoLinea")
-    private Integer idEstadoLinea;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 40)
-    @Column(name = "estLinNombre")
-    private String estLinNombre;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoLineaidEstadoLinea")
-    private List<Linea> lineaList;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
+	@Column(name = "idEstadoLinea")
+	private Integer idEstadoLinea;
+	@Basic(optional = false)
+	@NotNull
+	@Size(min = 1, max = 40)
+	@Column(name = "estLinNombre")
+	private String estLinNombre;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoLineaidEstadoLinea")
+	private List<Linea> lineaList;
 
-    public EstadoLinea() {
-    }
+	public EstadoLinea() {
+	}
 
-    public EstadoLinea(Integer idEstadoLinea) {
-        this.idEstadoLinea = idEstadoLinea;
-    }
+	public EstadoLinea(Integer idEstadoLinea) {
+		this.idEstadoLinea = idEstadoLinea;
+	}
 
-    public EstadoLinea(Integer idEstadoLinea, String estLinNombre) {
-        this.idEstadoLinea = idEstadoLinea;
-        this.estLinNombre = estLinNombre;
-    }
+	public EstadoLinea(Integer idEstadoLinea, String estLinNombre) {
+		this.idEstadoLinea = idEstadoLinea;
+		this.estLinNombre = estLinNombre;
+	}
 
-    public Integer getIdEstadoLinea() {
-        return idEstadoLinea;
-    }
+	public Integer getIdEstadoLinea() {
+		return idEstadoLinea;
+	}
 
-    public void setIdEstadoLinea(Integer idEstadoLinea) {
-        this.idEstadoLinea = idEstadoLinea;
-    }
+	public void setIdEstadoLinea(Integer idEstadoLinea) {
+		this.idEstadoLinea = idEstadoLinea;
+	}
 
-    public String getEstLinNombre() {
-        return estLinNombre;
-    }
+	public String getEstLinNombre() {
+		return estLinNombre;
+	}
 
-    public void setEstLinNombre(String estLinNombre) {
-        this.estLinNombre = estLinNombre;
-    }
+	public void setEstLinNombre(String estLinNombre) {
+		this.estLinNombre = estLinNombre;
+	}
 
-    @XmlTransient
-    public List<Linea> getLineaList() {
-        return lineaList;
-    }
+	@XmlTransient
+	public List<Linea> getLineaList() {
+		return lineaList;
+	}
 
-    public void setLineaList(List<Linea> lineaList) {
-        this.lineaList = lineaList;
-    }
+	public void setLineaList(List<Linea> lineaList) {
+		this.lineaList = lineaList;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idEstadoLinea != null ? idEstadoLinea.hashCode() : 0);
-        return hash;
-    }
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (idEstadoLinea != null ? idEstadoLinea.hashCode() : 0);
+		return hash;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof EstadoLinea)) {
-            return false;
-        }
-        EstadoLinea other = (EstadoLinea) object;
-        if ((this.idEstadoLinea == null && other.idEstadoLinea != null) || (this.idEstadoLinea != null && !this.idEstadoLinea.equals(other.idEstadoLinea))) {
-            return false;
-        }
-        return true;
-    }
+	@Override
+	public boolean equals(Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if (!(object instanceof EstadoLinea)) {
+			return false;
+		}
+		EstadoLinea other = (EstadoLinea) object;
+		if ((this.idEstadoLinea == null && other.idEstadoLinea != null)
+				|| (this.idEstadoLinea != null && !this.idEstadoLinea
+						.equals(other.idEstadoLinea))) {
+			return false;
+		}
+		return true;
+	}
 
-    @Override
-    public String toString() {
-        return "com.invte.rentavoz.logica.entidades.EstadoLinea[ idEstadoLinea=" + idEstadoLinea + " ]";
-    }
-    
+	@Override
+	public String toString() {
+		return "com.invte.rentavoz.logica.entidades.EstadoLinea[ idEstadoLinea="
+				+ idEstadoLinea + " ]";
+	}
+
 }

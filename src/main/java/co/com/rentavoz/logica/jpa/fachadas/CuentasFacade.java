@@ -11,21 +11,21 @@ import javax.persistence.PersistenceContext;
 import co.com.rentavoz.logica.jpa.entidades.Cuentas;
 
 /**
- *
+ * 
  * @author ejody
  */
 @Stateless
 public class CuentasFacade extends AbstractFacade<Cuentas> {
-    @PersistenceContext(unitName = "com.innovate.rentavozPU")
-    private EntityManager em;
+	@PersistenceContext(unitName = "com.innovate.rentavozPU")
+	private EntityManager em;
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
+	@Override
+	protected EntityManager getEntityManager() {
+		return em;
+	}
 
-    public CuentasFacade() {
-        super(Cuentas.class);
-    }
-    
+	public CuentasFacade() {
+		super(Cuentas.class);
+	}
+
 }

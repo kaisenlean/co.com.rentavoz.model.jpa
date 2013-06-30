@@ -11,21 +11,21 @@ import javax.persistence.PersistenceContext;
 import co.com.rentavoz.logica.jpa.entidades.EstadoLinea;
 
 /**
- *
+ * 
  * @author ejody
  */
 @Stateless
 public class EstadoLineaFacade extends AbstractFacade<EstadoLinea> {
-    @PersistenceContext(unitName = "com.innovate.rentavozPU")
-    private EntityManager em;
+	@PersistenceContext(unitName = "com.innovate.rentavozPU")
+	private EntityManager em;
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
+	@Override
+	protected EntityManager getEntityManager() {
+		return em;
+	}
 
-    public EstadoLineaFacade() {
-        super(EstadoLinea.class);
-    }
-    
+	public EstadoLineaFacade() {
+		super(EstadoLinea.class);
+	}
+
 }

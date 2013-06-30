@@ -60,7 +60,8 @@ public class LineaFacade extends AbstractFacade<Linea> {
 		}
 
 	}
-        	public Linea findBNumeroObjeto(String linNumero) {
+
+	public Linea findBNumeroObjeto(String linNumero) {
 		Query q = getEntityManager().createQuery(
 				"SELECT l FROM Linea l WHERE l.linNumero = :numero");
 		q.setParameter("numero", linNumero);

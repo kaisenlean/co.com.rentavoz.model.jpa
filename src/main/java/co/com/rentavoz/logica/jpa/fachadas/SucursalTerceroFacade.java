@@ -11,21 +11,21 @@ import javax.persistence.PersistenceContext;
 import co.com.rentavoz.logica.jpa.entidades.SucursalTercero;
 
 /**
- *
+ * 
  * @author ejody
  */
 @Stateless
 public class SucursalTerceroFacade extends AbstractFacade<SucursalTercero> {
-    @PersistenceContext(unitName = "com.innovate.rentavozPU")
-    private EntityManager em;
+	@PersistenceContext(unitName = "com.innovate.rentavozPU")
+	private EntityManager em;
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
+	@Override
+	protected EntityManager getEntityManager() {
+		return em;
+	}
 
-    public SucursalTerceroFacade() {
-        super(SucursalTercero.class);
-    }
-    
+	public SucursalTerceroFacade() {
+		super(SucursalTercero.class);
+	}
+
 }

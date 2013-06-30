@@ -14,28 +14,29 @@ import javax.persistence.Query;
 import co.com.rentavoz.logica.jpa.entidades.Operador;
 
 /**
- *
+ * 
  * @author ejody
  */
 @Stateless
 public class OperadorFacade extends AbstractFacade<Operador> {
-    @PersistenceContext(unitName = "com.innovate.rentavozPU")
-    private EntityManager em;
+	@PersistenceContext(unitName = "com.innovate.rentavozPU")
+	private EntityManager em;
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
+	@Override
+	protected EntityManager getEntityManager() {
+		return em;
+	}
 
-    public OperadorFacade() {
-        super(Operador.class);
-    }
+	public OperadorFacade() {
+		super(Operador.class);
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<Operador> findByCriterio(String criterio) {
-		Query query= getEntityManager().createQuery("SELECT o FROM Operador o WHERE o.opeNombre LIKE :criterio");
-		query.setParameter("criterio", "%"+criterio+"%");
+		Query query = getEntityManager().createQuery(
+				"SELECT o FROM Operador o WHERE o.opeNombre LIKE :criterio");
+		query.setParameter("criterio", "%" + criterio + "%");
 		return query.getResultList();
 	}
-    
+
 }

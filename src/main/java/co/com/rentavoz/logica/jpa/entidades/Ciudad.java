@@ -24,102 +24,107 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
+ * 
  * @author ejody
  */
 @Entity
 @Table(name = "Ciudad")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Ciudad.findAll", query = "SELECT c FROM Ciudad c"),
-    @NamedQuery(name = "Ciudad.findByIdCiudad", query = "SELECT c FROM Ciudad c WHERE c.idCiudad = :idCiudad"),
-    @NamedQuery(name = "Ciudad.findByCiuNombre", query = "SELECT c FROM Ciudad c WHERE c.ciuNombre = :ciuNombre")})
+		@NamedQuery(name = "Ciudad.findAll", query = "SELECT c FROM Ciudad c"),
+		@NamedQuery(name = "Ciudad.findByIdCiudad", query = "SELECT c FROM Ciudad c WHERE c.idCiudad = :idCiudad"),
+		@NamedQuery(name = "Ciudad.findByCiuNombre", query = "SELECT c FROM Ciudad c WHERE c.ciuNombre = :ciuNombre") })
 public class Ciudad implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "idCiudad")
-    private Integer idCiudad;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 40)
-    @Column(name = "ciuNombre")
-    private String ciuNombre;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ciudadidCiudad")
-    private List<Sucursal> sucursalList;
-    @JoinColumn(name = "Departamento_idDepartamento", referencedColumnName = "idDepartamento")
-    @ManyToOne(optional = false)
-    private Departamento departamentoidDepartamento;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@Basic(optional = false)
+	@NotNull
+	@Column(name = "idCiudad")
+	private Integer idCiudad;
+	@Basic(optional = false)
+	@NotNull
+	@Size(min = 1, max = 40)
+	@Column(name = "ciuNombre")
+	private String ciuNombre;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ciudadidCiudad")
+	private List<Sucursal> sucursalList;
+	@JoinColumn(name = "Departamento_idDepartamento", referencedColumnName = "idDepartamento")
+	@ManyToOne(optional = false)
+	private Departamento departamentoidDepartamento;
 
-    public Ciudad() {
-    }
+	public Ciudad() {
+	}
 
-    public Ciudad(Integer idCiudad) {
-        this.idCiudad = idCiudad;
-    }
+	public Ciudad(Integer idCiudad) {
+		this.idCiudad = idCiudad;
+	}
 
-    public Ciudad(Integer idCiudad, String ciuNombre) {
-        this.idCiudad = idCiudad;
-        this.ciuNombre = ciuNombre;
-    }
+	public Ciudad(Integer idCiudad, String ciuNombre) {
+		this.idCiudad = idCiudad;
+		this.ciuNombre = ciuNombre;
+	}
 
-    public Integer getIdCiudad() {
-        return idCiudad;
-    }
+	public Integer getIdCiudad() {
+		return idCiudad;
+	}
 
-    public void setIdCiudad(Integer idCiudad) {
-        this.idCiudad = idCiudad;
-    }
+	public void setIdCiudad(Integer idCiudad) {
+		this.idCiudad = idCiudad;
+	}
 
-    public String getCiuNombre() {
-        return ciuNombre;
-    }
+	public String getCiuNombre() {
+		return ciuNombre;
+	}
 
-    public void setCiuNombre(String ciuNombre) {
-        this.ciuNombre = ciuNombre;
-    }
+	public void setCiuNombre(String ciuNombre) {
+		this.ciuNombre = ciuNombre;
+	}
 
-    @XmlTransient
-    public List<Sucursal> getSucursalList() {
-        return sucursalList;
-    }
+	@XmlTransient
+	public List<Sucursal> getSucursalList() {
+		return sucursalList;
+	}
 
-    public void setSucursalList(List<Sucursal> sucursalList) {
-        this.sucursalList = sucursalList;
-    }
+	public void setSucursalList(List<Sucursal> sucursalList) {
+		this.sucursalList = sucursalList;
+	}
 
-    public Departamento getDepartamentoidDepartamento() {
-        return departamentoidDepartamento;
-    }
+	public Departamento getDepartamentoidDepartamento() {
+		return departamentoidDepartamento;
+	}
 
-    public void setDepartamentoidDepartamento(Departamento departamentoidDepartamento) {
-        this.departamentoidDepartamento = departamentoidDepartamento;
-    }
+	public void setDepartamentoidDepartamento(
+			Departamento departamentoidDepartamento) {
+		this.departamentoidDepartamento = departamentoidDepartamento;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idCiudad != null ? idCiudad.hashCode() : 0);
-        return hash;
-    }
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (idCiudad != null ? idCiudad.hashCode() : 0);
+		return hash;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Ciudad)) {
-            return false;
-        }
-        Ciudad other = (Ciudad) object;
-        if ((this.idCiudad == null && other.idCiudad != null) || (this.idCiudad != null && !this.idCiudad.equals(other.idCiudad))) {
-            return false;
-        }
-        return true;
-    }
+	@Override
+	public boolean equals(Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if (!(object instanceof Ciudad)) {
+			return false;
+		}
+		Ciudad other = (Ciudad) object;
+		if ((this.idCiudad == null && other.idCiudad != null)
+				|| (this.idCiudad != null && !this.idCiudad
+						.equals(other.idCiudad))) {
+			return false;
+		}
+		return true;
+	}
 
-    @Override
-    public String toString() {
-        return "com.invte.rentavoz.logica.entidades.Ciudad[ idCiudad=" + idCiudad + " ]";
-    }
-    
+	@Override
+	public String toString() {
+		return "com.invte.rentavoz.logica.entidades.Ciudad[ idCiudad="
+				+ idCiudad + " ]";
+	}
+
 }

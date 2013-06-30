@@ -25,128 +25,132 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ * 
  * @author ejody
  */
 @Entity
 @Table(name = "SucursalSimcard")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "SucursalSimcard.findAll", query = "SELECT s FROM SucursalSimcard s"),
-    @NamedQuery(name = "SucursalSimcard.findByIdSucSim", query = "SELECT s FROM SucursalSimcard s WHERE s.idSucSim = :idSucSim"),
-    @NamedQuery(name = "SucursalSimcard.findByFecha", query = "SELECT s FROM SucursalSimcard s WHERE s.fecha = :fecha"),
-    @NamedQuery(name = "SucursalSimcard.findBySucSimObservacion", query = "SELECT s FROM SucursalSimcard s WHERE s.sucSimObservacion = :sucSimObservacion"),
-    @NamedQuery(name = "SucursalSimcard.findBySucSimEstado", query = "SELECT s FROM SucursalSimcard s WHERE s.sucSimEstado = :sucSimEstado")})
+		@NamedQuery(name = "SucursalSimcard.findAll", query = "SELECT s FROM SucursalSimcard s"),
+		@NamedQuery(name = "SucursalSimcard.findByIdSucSim", query = "SELECT s FROM SucursalSimcard s WHERE s.idSucSim = :idSucSim"),
+		@NamedQuery(name = "SucursalSimcard.findByFecha", query = "SELECT s FROM SucursalSimcard s WHERE s.fecha = :fecha"),
+		@NamedQuery(name = "SucursalSimcard.findBySucSimObservacion", query = "SELECT s FROM SucursalSimcard s WHERE s.sucSimObservacion = :sucSimObservacion"),
+		@NamedQuery(name = "SucursalSimcard.findBySucSimEstado", query = "SELECT s FROM SucursalSimcard s WHERE s.sucSimEstado = :sucSimEstado") })
 public class SucursalSimcard implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "idSucSim")
-    private Integer idSucSim;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "fecha")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fecha;
-    @Size(max = 70)
-    @Column(name = "sucSimObservacion")
-    private String sucSimObservacion;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "sucSimEstado")
-    private int sucSimEstado;
-    @JoinColumn(name = "Simcard_idSimcard", referencedColumnName = "idSimcard")
-    @ManyToOne(optional = false)
-    private Simcard simcardidSimcard;
-    @JoinColumn(name = "Sucursal_idSucursal", referencedColumnName = "idSucursal")
-    @ManyToOne(optional = false)
-    private Sucursal sucursalidSucursal;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
+	@Column(name = "idSucSim")
+	private Integer idSucSim;
+	@Basic(optional = false)
+	@NotNull
+	@Column(name = "fecha")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fecha;
+	@Size(max = 70)
+	@Column(name = "sucSimObservacion")
+	private String sucSimObservacion;
+	@Basic(optional = false)
+	@NotNull
+	@Column(name = "sucSimEstado")
+	private int sucSimEstado;
+	@JoinColumn(name = "Simcard_idSimcard", referencedColumnName = "idSimcard")
+	@ManyToOne(optional = false)
+	private Simcard simcardidSimcard;
+	@JoinColumn(name = "Sucursal_idSucursal", referencedColumnName = "idSucursal")
+	@ManyToOne(optional = false)
+	private Sucursal sucursalidSucursal;
 
-    public SucursalSimcard() {
-    }
+	public SucursalSimcard() {
+	}
 
-    public SucursalSimcard(Integer idSucSim) {
-        this.idSucSim = idSucSim;
-    }
+	public SucursalSimcard(Integer idSucSim) {
+		this.idSucSim = idSucSim;
+	}
 
-    public SucursalSimcard(Integer idSucSim, Date fecha, int sucSimEstado) {
-        this.idSucSim = idSucSim;
-        this.fecha = fecha;
-        this.sucSimEstado = sucSimEstado;
-    }
+	public SucursalSimcard(Integer idSucSim, Date fecha, int sucSimEstado) {
+		this.idSucSim = idSucSim;
+		this.fecha = fecha;
+		this.sucSimEstado = sucSimEstado;
+	}
 
-    public Integer getIdSucSim() {
-        return idSucSim;
-    }
+	public Integer getIdSucSim() {
+		return idSucSim;
+	}
 
-    public void setIdSucSim(Integer idSucSim) {
-        this.idSucSim = idSucSim;
-    }
+	public void setIdSucSim(Integer idSucSim) {
+		this.idSucSim = idSucSim;
+	}
 
-    public Date getFecha() {
-        return fecha;
-    }
+	public Date getFecha() {
+		return fecha;
+	}
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
 
-    public String getSucSimObservacion() {
-        return sucSimObservacion;
-    }
+	public String getSucSimObservacion() {
+		return sucSimObservacion;
+	}
 
-    public void setSucSimObservacion(String sucSimObservacion) {
-        this.sucSimObservacion = sucSimObservacion;
-    }
+	public void setSucSimObservacion(String sucSimObservacion) {
+		this.sucSimObservacion = sucSimObservacion;
+	}
 
-    public int getSucSimEstado() {
-        return sucSimEstado;
-    }
+	public int getSucSimEstado() {
+		return sucSimEstado;
+	}
 
-    public void setSucSimEstado(int sucSimEstado) {
-        this.sucSimEstado = sucSimEstado;
-    }
+	public void setSucSimEstado(int sucSimEstado) {
+		this.sucSimEstado = sucSimEstado;
+	}
 
-    public Simcard getSimcardidSimcard() {
-        return simcardidSimcard;
-    }
+	public Simcard getSimcardidSimcard() {
+		return simcardidSimcard;
+	}
 
-    public void setSimcardidSimcard(Simcard simcardidSimcard) {
-        this.simcardidSimcard = simcardidSimcard;
-    }
+	public void setSimcardidSimcard(Simcard simcardidSimcard) {
+		this.simcardidSimcard = simcardidSimcard;
+	}
 
-    public Sucursal getSucursalidSucursal() {
-        return sucursalidSucursal;
-    }
+	public Sucursal getSucursalidSucursal() {
+		return sucursalidSucursal;
+	}
 
-    public void setSucursalidSucursal(Sucursal sucursalidSucursal) {
-        this.sucursalidSucursal = sucursalidSucursal;
-    }
+	public void setSucursalidSucursal(Sucursal sucursalidSucursal) {
+		this.sucursalidSucursal = sucursalidSucursal;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idSucSim != null ? idSucSim.hashCode() : 0);
-        return hash;
-    }
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (idSucSim != null ? idSucSim.hashCode() : 0);
+		return hash;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof SucursalSimcard)) {
-            return false;
-        }
-        SucursalSimcard other = (SucursalSimcard) object;
-        if ((this.idSucSim == null && other.idSucSim != null) || (this.idSucSim != null && !this.idSucSim.equals(other.idSucSim))) {
-            return false;
-        }
-        return true;
-    }
+	@Override
+	public boolean equals(Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if (!(object instanceof SucursalSimcard)) {
+			return false;
+		}
+		SucursalSimcard other = (SucursalSimcard) object;
+		if ((this.idSucSim == null && other.idSucSim != null)
+				|| (this.idSucSim != null && !this.idSucSim
+						.equals(other.idSucSim))) {
+			return false;
+		}
+		return true;
+	}
 
-    @Override
-    public String toString() {
-        return "com.invte.rentavoz.logica.entidades.SucursalSimcard[ idSucSim=" + idSucSim + " ]";
-    }
-    
+	@Override
+	public String toString() {
+		return "com.invte.rentavoz.logica.entidades.SucursalSimcard[ idSucSim="
+				+ idSucSim + " ]";
+	}
+
 }

@@ -27,134 +27,135 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
+ * 
  * @author ejody
  */
 @Entity
 @Table(name = "Simcard")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Simcard.findAll", query = "SELECT s FROM Simcard s"),
-    @NamedQuery(name = "Simcard.findByIdSimcard", query = "SELECT s FROM Simcard s WHERE s.idSimcard = :idSimcard"),
-    @NamedQuery(name = "Simcard.findBySimIccid", query = "SELECT s FROM Simcard s WHERE s.simIccid = :simIccid"),
-    @NamedQuery(name = "Simcard.findBySimEstado", query = "SELECT s FROM Simcard s WHERE s.simEstado = :simEstado"),
-    @NamedQuery(name = "Simcard.findByFecha", query = "SELECT s FROM Simcard s WHERE s.fecha = :fecha")})
+		@NamedQuery(name = "Simcard.findAll", query = "SELECT s FROM Simcard s"),
+		@NamedQuery(name = "Simcard.findByIdSimcard", query = "SELECT s FROM Simcard s WHERE s.idSimcard = :idSimcard"),
+		@NamedQuery(name = "Simcard.findBySimIccid", query = "SELECT s FROM Simcard s WHERE s.simIccid = :simIccid"),
+		@NamedQuery(name = "Simcard.findBySimEstado", query = "SELECT s FROM Simcard s WHERE s.simEstado = :simEstado"),
+		@NamedQuery(name = "Simcard.findByFecha", query = "SELECT s FROM Simcard s WHERE s.fecha = :fecha") })
 public class Simcard implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "idSimcard")
-    private Integer idSimcard;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 40)
-    @Column(name = "simIccid")
-    private String simIccid;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "simEstado")
-    private int simEstado;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "fecha")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fecha;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "simcardidSimcard")
-    private List<SucursalSimcard> sucursalSimcardList;
-    @OneToMany(mappedBy = "simcard")
-    private List<Linea> lineas;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
+	@Column(name = "idSimcard")
+	private Integer idSimcard;
+	@Basic(optional = false)
+	@NotNull
+	@Size(min = 1, max = 40)
+	@Column(name = "simIccid")
+	private String simIccid;
+	@Basic(optional = false)
+	@NotNull
+	@Column(name = "simEstado")
+	private int simEstado;
+	@Basic(optional = false)
+	@NotNull
+	@Column(name = "fecha")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fecha;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "simcardidSimcard")
+	private List<SucursalSimcard> sucursalSimcardList;
+	@OneToMany(mappedBy = "simcard")
+	private List<Linea> lineas;
 
+	public Simcard() {
+	}
 
-    public Simcard() {
-    }
+	public Simcard(Integer idSimcard) {
+		this.idSimcard = idSimcard;
+	}
 
-    public Simcard(Integer idSimcard) {
-        this.idSimcard = idSimcard;
-    }
+	public Simcard(Integer idSimcard, String simIccid, int simEstado, Date fecha) {
+		this.idSimcard = idSimcard;
+		this.simIccid = simIccid;
+		this.simEstado = simEstado;
+		this.fecha = fecha;
+	}
 
-    public Simcard(Integer idSimcard, String simIccid, int simEstado, Date fecha) {
-        this.idSimcard = idSimcard;
-        this.simIccid = simIccid;
-        this.simEstado = simEstado;
-        this.fecha = fecha;
-    }
+	@XmlTransient
+	public List<Linea> getLineas() {
+		return lineas;
+	}
 
-    @XmlTransient
-    public List<Linea> getLineas() {
-        return lineas;
-    }
+	public void setLineas(List<Linea> lineas) {
+		this.lineas = lineas;
+	}
 
-    public void setLineas(List<Linea> lineas) {
-        this.lineas = lineas;
-    }
+	public Integer getIdSimcard() {
+		return idSimcard;
+	}
 
-   
-    public Integer getIdSimcard() {
-        return idSimcard;
-    }
+	public void setIdSimcard(Integer idSimcard) {
+		this.idSimcard = idSimcard;
+	}
 
-    public void setIdSimcard(Integer idSimcard) {
-        this.idSimcard = idSimcard;
-    }
+	public String getSimIccid() {
+		return simIccid;
+	}
 
-    public String getSimIccid() {
-        return simIccid;
-    }
+	public void setSimIccid(String simIccid) {
+		this.simIccid = simIccid;
+	}
 
-    public void setSimIccid(String simIccid) {
-        this.simIccid = simIccid;
-    }
+	public int getSimEstado() {
+		return simEstado;
+	}
 
-    public int getSimEstado() {
-        return simEstado;
-    }
+	public void setSimEstado(int simEstado) {
+		this.simEstado = simEstado;
+	}
 
-    public void setSimEstado(int simEstado) {
-        this.simEstado = simEstado;
-    }
+	public Date getFecha() {
+		return fecha;
+	}
 
-    public Date getFecha() {
-        return fecha;
-    }
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
+	@XmlTransient
+	public List<SucursalSimcard> getSucursalSimcardList() {
+		return sucursalSimcardList;
+	}
 
-    @XmlTransient
-    public List<SucursalSimcard> getSucursalSimcardList() {
-        return sucursalSimcardList;
-    }
+	public void setSucursalSimcardList(List<SucursalSimcard> sucursalSimcardList) {
+		this.sucursalSimcardList = sucursalSimcardList;
+	}
 
-    public void setSucursalSimcardList(List<SucursalSimcard> sucursalSimcardList) {
-        this.sucursalSimcardList = sucursalSimcardList;
-    }
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (idSimcard != null ? idSimcard.hashCode() : 0);
+		return hash;
+	}
 
+	@Override
+	public boolean equals(Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if (!(object instanceof Simcard)) {
+			return false;
+		}
+		Simcard other = (Simcard) object;
+		if ((this.idSimcard == null && other.idSimcard != null)
+				|| (this.idSimcard != null && !this.idSimcard
+						.equals(other.idSimcard))) {
+			return false;
+		}
+		return true;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idSimcard != null ? idSimcard.hashCode() : 0);
-        return hash;
-    }
+	@Override
+	public String toString() {
+		return "com.invte.rentavoz.logica.entidades.Simcard[ idSimcard="
+				+ idSimcard + " ]";
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Simcard)) {
-            return false;
-        }
-        Simcard other = (Simcard) object;
-        if ((this.idSimcard == null && other.idSimcard != null) || (this.idSimcard != null && !this.idSimcard.equals(other.idSimcard))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.invte.rentavoz.logica.entidades.Simcard[ idSimcard=" + idSimcard + " ]";
-    }
-    
 }

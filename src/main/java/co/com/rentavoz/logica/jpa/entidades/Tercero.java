@@ -25,207 +25,210 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
+ * 
  * @author ejody
  */
 @Entity
 @Table(name = "Tercero")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Tercero.findAll", query = "SELECT t FROM Tercero t"),
-    @NamedQuery(name = "Tercero.findByIdTecero", query = "SELECT t FROM Tercero t WHERE t.idTecero = :idTecero"),
-    @NamedQuery(name = "Tercero.findByTerNombre", query = "SELECT t FROM Tercero t WHERE t.terNombre = :terNombre"),
-    @NamedQuery(name = "Tercero.findByTerApellidos", query = "SELECT t FROM Tercero t WHERE t.terApellidos = :terApellidos"),
-    @NamedQuery(name = "Tercero.findByTerTelefono", query = "SELECT t FROM Tercero t WHERE t.terTelefono = :terTelefono"),
-    @NamedQuery(name = "Tercero.findByTerDireccion", query = "SELECT t FROM Tercero t WHERE t.terDireccion = :terDireccion"),
-    @NamedQuery(name = "Tercero.findByTerDocumento", query = "SELECT t FROM Tercero t WHERE t.terDocumento = :terDocumento"),
-    @NamedQuery(name = "Tercero.findByTerClave", query = "SELECT t FROM Tercero t WHERE t.terClave = :terClave")})
+		@NamedQuery(name = "Tercero.findAll", query = "SELECT t FROM Tercero t"),
+		@NamedQuery(name = "Tercero.findByIdTecero", query = "SELECT t FROM Tercero t WHERE t.idTecero = :idTecero"),
+		@NamedQuery(name = "Tercero.findByTerNombre", query = "SELECT t FROM Tercero t WHERE t.terNombre = :terNombre"),
+		@NamedQuery(name = "Tercero.findByTerApellidos", query = "SELECT t FROM Tercero t WHERE t.terApellidos = :terApellidos"),
+		@NamedQuery(name = "Tercero.findByTerTelefono", query = "SELECT t FROM Tercero t WHERE t.terTelefono = :terTelefono"),
+		@NamedQuery(name = "Tercero.findByTerDireccion", query = "SELECT t FROM Tercero t WHERE t.terDireccion = :terDireccion"),
+		@NamedQuery(name = "Tercero.findByTerDocumento", query = "SELECT t FROM Tercero t WHERE t.terDocumento = :terDocumento"),
+		@NamedQuery(name = "Tercero.findByTerClave", query = "SELECT t FROM Tercero t WHERE t.terClave = :terClave") })
 public class Tercero implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "idTecero")
-    private Integer idTecero;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "terNombre")
-    private String terNombre;
-    @Size(max = 45)
-    @Column(name = "terApellidos")
-    private String terApellidos;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "terTelefono")
-    private String terTelefono;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "terDireccion")
-    private String terDireccion;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "terDocumento")
-    private int terDocumento;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 60)
-    @Column(name = "terClave")
-    private String terClave;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "terceroidTecero")
-    private List<TerceroVenta> terceroVentaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "terceroidTecero")
-    private List<Roles> rolesList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "terceroidTecero")
-    private List<SucursalTercero> sucursalTerceroList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "terceroidTecero")
-    private List<Plan> planList;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
+	@Column(name = "idTecero")
+	private Integer idTecero;
+	@Basic(optional = false)
+	@NotNull
+	@Size(min = 1, max = 45)
+	@Column(name = "terNombre")
+	private String terNombre;
+	@Size(max = 45)
+	@Column(name = "terApellidos")
+	private String terApellidos;
+	@Basic(optional = false)
+	@NotNull
+	@Size(min = 1, max = 45)
+	@Column(name = "terTelefono")
+	private String terTelefono;
+	@Basic(optional = false)
+	@NotNull
+	@Size(min = 1, max = 45)
+	@Column(name = "terDireccion")
+	private String terDireccion;
+	@Basic(optional = false)
+	@NotNull
+	@Column(name = "terDocumento")
+	private int terDocumento;
+	@Basic(optional = false)
+	@NotNull
+	@Size(min = 1, max = 60)
+	@Column(name = "terClave")
+	private String terClave;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "terceroidTecero")
+	private List<TerceroVenta> terceroVentaList;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "terceroidTecero")
+	private List<Roles> rolesList;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "terceroidTecero")
+	private List<SucursalTercero> sucursalTerceroList;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "terceroidTecero")
+	private List<Plan> planList;
 
-    @Transient
-    private String repTerClave;
-    
-    public Tercero() {
-    }
+	@Transient
+	private String repTerClave;
 
-    public Tercero(Integer idTecero) {
-        this.idTecero = idTecero;
-    }
+	public Tercero() {
+	}
 
-    public Tercero(Integer idTecero, String terNombre, String terTelefono, String terDireccion, int terDocumento, String terClave) {
-        this.idTecero = idTecero;
-        this.terNombre = terNombre;
-        this.terTelefono = terTelefono;
-        this.terDireccion = terDireccion;
-        this.terDocumento = terDocumento;
-        this.terClave = terClave;
-    }
+	public Tercero(Integer idTecero) {
+		this.idTecero = idTecero;
+	}
 
-    public Integer getIdTecero() {
-        return idTecero;
-    }
+	public Tercero(Integer idTecero, String terNombre, String terTelefono,
+			String terDireccion, int terDocumento, String terClave) {
+		this.idTecero = idTecero;
+		this.terNombre = terNombre;
+		this.terTelefono = terTelefono;
+		this.terDireccion = terDireccion;
+		this.terDocumento = terDocumento;
+		this.terClave = terClave;
+	}
 
-    public void setIdTecero(Integer idTecero) {
-        this.idTecero = idTecero;
-    }
+	public Integer getIdTecero() {
+		return idTecero;
+	}
 
-    public String getTerNombre() {
-        return terNombre;
-    }
+	public void setIdTecero(Integer idTecero) {
+		this.idTecero = idTecero;
+	}
 
-    public void setTerNombre(String terNombre) {
-        this.terNombre = terNombre;
-    }
+	public String getTerNombre() {
+		return terNombre;
+	}
 
-    public String getTerApellidos() {
-        return terApellidos;
-    }
+	public void setTerNombre(String terNombre) {
+		this.terNombre = terNombre;
+	}
 
-    public void setTerApellidos(String terApellidos) {
-        this.terApellidos = terApellidos;
-    }
+	public String getTerApellidos() {
+		return terApellidos;
+	}
 
-    public String getTerTelefono() {
-        return terTelefono;
-    }
+	public void setTerApellidos(String terApellidos) {
+		this.terApellidos = terApellidos;
+	}
 
-    public void setTerTelefono(String terTelefono) {
-        this.terTelefono = terTelefono;
-    }
+	public String getTerTelefono() {
+		return terTelefono;
+	}
 
-    public String getTerDireccion() {
-        return terDireccion;
-    }
+	public void setTerTelefono(String terTelefono) {
+		this.terTelefono = terTelefono;
+	}
 
-    public void setTerDireccion(String terDireccion) {
-        this.terDireccion = terDireccion;
-    }
+	public String getTerDireccion() {
+		return terDireccion;
+	}
 
-    public int getTerDocumento() {
-        return terDocumento;
-    }
+	public void setTerDireccion(String terDireccion) {
+		this.terDireccion = terDireccion;
+	}
 
-    public void setTerDocumento(int terDocumento) {
-        this.terDocumento = terDocumento;
-    }
+	public int getTerDocumento() {
+		return terDocumento;
+	}
 
-    public String getTerClave() {
-        return terClave;
-    }
+	public void setTerDocumento(int terDocumento) {
+		this.terDocumento = terDocumento;
+	}
 
-    public void setTerClave(String terClave) {
-        this.terClave = terClave;
-    }
+	public String getTerClave() {
+		return terClave;
+	}
 
-    @XmlTransient
-    public List<TerceroVenta> getTerceroVentaList() {
-        return terceroVentaList;
-    }
+	public void setTerClave(String terClave) {
+		this.terClave = terClave;
+	}
 
-    public void setTerceroVentaList(List<TerceroVenta> terceroVentaList) {
-        this.terceroVentaList = terceroVentaList;
-    }
+	@XmlTransient
+	public List<TerceroVenta> getTerceroVentaList() {
+		return terceroVentaList;
+	}
 
-    @XmlTransient
-    public List<Roles> getRolesList() {
-        return rolesList;
-    }
+	public void setTerceroVentaList(List<TerceroVenta> terceroVentaList) {
+		this.terceroVentaList = terceroVentaList;
+	}
 
-    public void setRolesList(List<Roles> rolesList) {
-        this.rolesList = rolesList;
-    }
+	@XmlTransient
+	public List<Roles> getRolesList() {
+		return rolesList;
+	}
 
-    @XmlTransient
-    public List<SucursalTercero> getSucursalTerceroList() {
-        return sucursalTerceroList;
-    }
+	public void setRolesList(List<Roles> rolesList) {
+		this.rolesList = rolesList;
+	}
 
-    public void setSucursalTerceroList(List<SucursalTercero> sucursalTerceroList) {
-        this.sucursalTerceroList = sucursalTerceroList;
-    }
+	@XmlTransient
+	public List<SucursalTercero> getSucursalTerceroList() {
+		return sucursalTerceroList;
+	}
 
-    @XmlTransient
-    public List<Plan> getPlanList() {
-        return planList;
-    }
+	public void setSucursalTerceroList(List<SucursalTercero> sucursalTerceroList) {
+		this.sucursalTerceroList = sucursalTerceroList;
+	}
 
-    public void setPlanList(List<Plan> planList) {
-        this.planList = planList;
-    }
+	@XmlTransient
+	public List<Plan> getPlanList() {
+		return planList;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idTecero != null ? idTecero.hashCode() : 0);
-        return hash;
-    }
+	public void setPlanList(List<Plan> planList) {
+		this.planList = planList;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Tercero)) {
-            return false;
-        }
-        Tercero other = (Tercero) object;
-        if ((this.idTecero == null && other.idTecero != null) || (this.idTecero != null && !this.idTecero.equals(other.idTecero))) {
-            return false;
-        }
-        return true;
-    }
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (idTecero != null ? idTecero.hashCode() : 0);
+		return hash;
+	}
 
-    public String getRepTerClave() {
-        return repTerClave;
-    }
+	@Override
+	public boolean equals(Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if (!(object instanceof Tercero)) {
+			return false;
+		}
+		Tercero other = (Tercero) object;
+		if ((this.idTecero == null && other.idTecero != null)
+				|| (this.idTecero != null && !this.idTecero
+						.equals(other.idTecero))) {
+			return false;
+		}
+		return true;
+	}
 
-    public void setRepTerClave(String repTerClave) {
-        this.repTerClave = repTerClave;
-    }
+	public String getRepTerClave() {
+		return repTerClave;
+	}
 
-    
-    @Override
-    public String toString() {
-        return terNombre+" "+terApellidos+" [ "+terDocumento+" ]";
-    }
-    
+	public void setRepTerClave(String repTerClave) {
+		this.repTerClave = repTerClave;
+	}
+
+	@Override
+	public String toString() {
+		return terNombre + " " + terApellidos + " [ " + terDocumento + " ]";
+	}
+
 }

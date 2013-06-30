@@ -21,111 +21,114 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ * 
  * @author ejody
  */
 @Entity
 @Table(name = "TerceroVenta")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TerceroVenta.findAll", query = "SELECT t FROM TerceroVenta t"),
-    @NamedQuery(name = "TerceroVenta.findByIdTerVen", query = "SELECT t FROM TerceroVenta t WHERE t.idTerVen = :idTerVen"),
-    @NamedQuery(name = "TerceroVenta.findByTerVenTipo", query = "SELECT t FROM TerceroVenta t WHERE t.terVenTipo = :terVenTipo")})
+		@NamedQuery(name = "TerceroVenta.findAll", query = "SELECT t FROM TerceroVenta t"),
+		@NamedQuery(name = "TerceroVenta.findByIdTerVen", query = "SELECT t FROM TerceroVenta t WHERE t.idTerVen = :idTerVen"),
+		@NamedQuery(name = "TerceroVenta.findByTerVenTipo", query = "SELECT t FROM TerceroVenta t WHERE t.terVenTipo = :terVenTipo") })
 public class TerceroVenta implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idTerVen")
-    private Integer idTerVen;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "terVenTipo")
-    private int terVenTipo;
-    @JoinColumn(name = "Venta_idVenta", referencedColumnName = "idVenta")
-    @ManyToOne(optional = false)
-    private Venta ventaidVenta;
-    @JoinColumn(name = "Tercero_idTecero", referencedColumnName = "idTecero")
-    @ManyToOne(optional = false)
-    private Tercero terceroidTecero;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idTerVen")
+	private Integer idTerVen;
+	@Basic(optional = false)
+	@NotNull
+	@Column(name = "terVenTipo")
+	private int terVenTipo;
+	@JoinColumn(name = "Venta_idVenta", referencedColumnName = "idVenta")
+	@ManyToOne(optional = false)
+	private Venta ventaidVenta;
+	@JoinColumn(name = "Tercero_idTecero", referencedColumnName = "idTecero")
+	@ManyToOne(optional = false)
+	private Tercero terceroidTecero;
 
-    public TerceroVenta() {
-    }
+	public TerceroVenta() {
+	}
 
-    public TerceroVenta(Tercero tercero) {
-        this.terceroidTecero = tercero;
-    }
- 
-       public TerceroVenta(Tercero tercero,Venta venta) {
-        this.terceroidTecero = tercero;
-        this.ventaidVenta=venta;
-        this.terVenTipo=0;
-    }
-    
-    public TerceroVenta(Integer idTerVen) {
-        this.idTerVen = idTerVen;
-    }
+	public TerceroVenta(Tercero tercero) {
+		this.terceroidTecero = tercero;
+	}
 
+	public TerceroVenta(Tercero tercero, Venta venta) {
+		this.terceroidTecero = tercero;
+		this.ventaidVenta = venta;
+		this.terVenTipo = 0;
+	}
 
-    public TerceroVenta(Integer idTerVen, int terVenTipo) {
-        this.idTerVen = idTerVen;
-        this.terVenTipo = terVenTipo;
-    }
+	public TerceroVenta(Integer idTerVen) {
+		this.idTerVen = idTerVen;
+	}
 
-    public Integer getIdTerVen() {
-        return idTerVen;
-    }
+	public TerceroVenta(Integer idTerVen, int terVenTipo) {
+		this.idTerVen = idTerVen;
+		this.terVenTipo = terVenTipo;
+	}
 
-    public void setIdTerVen(Integer idTerVen) {
-        this.idTerVen = idTerVen;
-    }
+	public Integer getIdTerVen() {
+		return idTerVen;
+	}
 
-    public int getTerVenTipo() {
-        return terVenTipo;
-    }
+	public void setIdTerVen(Integer idTerVen) {
+		this.idTerVen = idTerVen;
+	}
 
-    public void setTerVenTipo(int terVenTipo) {
-        this.terVenTipo = terVenTipo;
-    }
+	public int getTerVenTipo() {
+		return terVenTipo;
+	}
 
-    public Venta getVentaidVenta() {
-        return ventaidVenta;
-    }
+	public void setTerVenTipo(int terVenTipo) {
+		this.terVenTipo = terVenTipo;
+	}
 
-    public void setVentaidVenta(Venta ventaidVenta) {
-        this.ventaidVenta = ventaidVenta;
-    }
+	public Venta getVentaidVenta() {
+		return ventaidVenta;
+	}
 
-    public Tercero getTerceroidTecero() {
-        return terceroidTecero;
-    }
+	public void setVentaidVenta(Venta ventaidVenta) {
+		this.ventaidVenta = ventaidVenta;
+	}
 
-    public void setTerceroidTecero(Tercero terceroidTecero) {
-        this.terceroidTecero = terceroidTecero;
-    }
+	public Tercero getTerceroidTecero() {
+		return terceroidTecero;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idTerVen != null ? idTerVen.hashCode() : 0);
-        return hash;
-    }
+	public void setTerceroidTecero(Tercero terceroidTecero) {
+		this.terceroidTecero = terceroidTecero;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TerceroVenta)) {
-            return false;
-        }
-        TerceroVenta other = (TerceroVenta) object;
-        if ((this.idTerVen == null && other.idTerVen != null) || (this.idTerVen != null && !this.idTerVen.equals(other.idTerVen))) {
-            return false;
-        }
-        return true;
-    }
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (idTerVen != null ? idTerVen.hashCode() : 0);
+		return hash;
+	}
 
-    @Override
-    public String toString() {
-        return "com.invte.rentavoz.logica.entidades.TerceroVenta[ idTerVen=" + idTerVen + " ]";
-    }
-    
+	@Override
+	public boolean equals(Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if (!(object instanceof TerceroVenta)) {
+			return false;
+		}
+		TerceroVenta other = (TerceroVenta) object;
+		if ((this.idTerVen == null && other.idTerVen != null)
+				|| (this.idTerVen != null && !this.idTerVen
+						.equals(other.idTerVen))) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "com.invte.rentavoz.logica.entidades.TerceroVenta[ idTerVen="
+				+ idTerVen + " ]";
+	}
+
 }

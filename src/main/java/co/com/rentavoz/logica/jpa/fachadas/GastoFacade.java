@@ -11,21 +11,21 @@ import javax.persistence.PersistenceContext;
 import co.com.rentavoz.logica.jpa.entidades.Gasto;
 
 /**
- *
+ * 
  * @author ejody
  */
 @Stateless
 public class GastoFacade extends AbstractFacade<Gasto> {
-    @PersistenceContext(unitName = "com.innovate.rentavozPU")
-    private EntityManager em;
+	@PersistenceContext(unitName = "com.innovate.rentavozPU")
+	private EntityManager em;
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
+	@Override
+	protected EntityManager getEntityManager() {
+		return em;
+	}
 
-    public GastoFacade() {
-        super(Gasto.class);
-    }
-    
+	public GastoFacade() {
+		super(Gasto.class);
+	}
+
 }

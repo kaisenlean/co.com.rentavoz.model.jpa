@@ -9,23 +9,23 @@ import java.util.List;
 import javax.ejb.Remote;
 
 /**
- *
+ * 
  * @author ejody
  */
 @Remote
 interface FacadeRemote<T> {
 
-    void create(T entity);
+	void create(T entity);
 
-    public void edit(T entity);
+	public void edit(T entity);
 
-    public void remove(T entity);
+	public void remove(T entity);
 
-    public T find(Object id);
+	public T find(Object id);
 
-    public List<T> findAll();
+	public List<T> findAll();
 
-    public List<T> findRange(int[] range);
+	public List<T> findRange(int[] range);
 
-    public int count();
+	public int count();
 }

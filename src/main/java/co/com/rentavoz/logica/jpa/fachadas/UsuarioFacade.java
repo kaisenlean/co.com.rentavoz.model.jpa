@@ -11,21 +11,21 @@ import javax.persistence.PersistenceContext;
 import co.com.rentavoz.logica.jpa.entidades.Usuario;
 
 /**
- *
+ * 
  * @author ejody
  */
 @Stateless
 public class UsuarioFacade extends AbstractFacade<Usuario> {
-    @PersistenceContext(unitName = "com.innovate.rentavozPU")
-    private EntityManager em;
+	@PersistenceContext(unitName = "com.innovate.rentavozPU")
+	private EntityManager em;
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
+	@Override
+	protected EntityManager getEntityManager() {
+		return em;
+	}
 
-    public UsuarioFacade() {
-        super(Usuario.class);
-    }
-    
+	public UsuarioFacade() {
+		super(Usuario.class);
+	}
+
 }
