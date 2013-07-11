@@ -36,6 +36,7 @@ public class CiudadFacade extends AbstractFacade<Ciudad> {
 		super(Ciudad.class);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Ciudad> findAll() {
 		Query q = getEntityManager()

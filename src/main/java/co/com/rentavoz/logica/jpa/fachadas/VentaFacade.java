@@ -29,7 +29,6 @@ public class VentaFacade extends AbstractFacade<Venta> {
 		super(Venta.class);
 	}
 
-	@SuppressWarnings("unused")
 	public Integer findSgteNumero() {
 		Query query = getEntityManager().createQuery(
 				"SELECT MAX(v.idVenta) FROM Venta v");
