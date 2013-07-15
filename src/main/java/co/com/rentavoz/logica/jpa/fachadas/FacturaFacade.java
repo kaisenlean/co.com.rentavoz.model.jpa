@@ -8,19 +8,18 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import co.com.rentavoz.logica.jpa.entidades.Usuario;
-
+import co.com.rentavoz.logica.jpa.entidades.almacen.Factura;
 
 /**
  * 
 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
 * @project co.com.rentavoz.model.jpa
-* @class UsuarioFacade
-* @date 13/07/2013
+* @class FacturaFacade
+* @date 14/07/2013
 *
  */
 @Stateless
-public class UsuarioFacade extends AbstractFacade<Usuario> {
+public class FacturaFacade extends AbstractFacade<Factura> {
 	@PersistenceContext(unitName = "com.innovate.rentavozPU")
 	private EntityManager em;
 
@@ -29,8 +28,13 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
 		return em;
 	}
 
-	public UsuarioFacade() {
-		super(Usuario.class);
+	/**
+	 * 
+	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	* @date 14/07/2013
+	 */
+	public FacturaFacade() {
+		super(Factura.class);
 	}
 
 }

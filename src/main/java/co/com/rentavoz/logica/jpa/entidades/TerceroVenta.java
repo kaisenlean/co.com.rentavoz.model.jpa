@@ -20,6 +20,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import co.com.rentavoz.logica.jpa.entidades.almacen.Venta;
+
 /**
  * 
  * @author ejody

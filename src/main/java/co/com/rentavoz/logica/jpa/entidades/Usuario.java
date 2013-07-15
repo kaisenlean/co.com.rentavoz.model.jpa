@@ -19,7 +19,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * 
- * @author ejody
+* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+* @project co.com.rentavoz.model.jpa
+* @class Usuario
+* @date 13/07/2013
+*
  */
 @Entity
 @Table(name = "usuario")
@@ -43,63 +47,123 @@ public class Usuario implements Serializable {
 	@Column(name = "contrasena")
 	private String contrasena;
 
+	/**
+	 * 
+	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	* @date 13/07/2013
+	 */
 	public Usuario() {
 	}
 
-	public Usuario(String usuario) {
+	/**
+	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	* @date 13/07/2013
+	* @param usuario
+	* @param administrador
+	* @param contrasena
+	*/
+	public Usuario(String usuario, Character administrador, String contrasena) {
+		super();
 		this.usuario = usuario;
+		this.administrador = administrador;
+		this.contrasena = contrasena;
 	}
 
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the usuario
+	 */
 	public String getUsuario() {
 		return usuario;
 	}
 
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param usuario the usuario to set
+	 */
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
 
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the administrador
+	 */
 	public Character getAdministrador() {
 		return administrador;
 	}
 
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param administrador the administrador to set
+	 */
 	public void setAdministrador(Character administrador) {
 		this.administrador = administrador;
 	}
 
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the contrasena
+	 */
 	public String getContrasena() {
 		return contrasena;
 	}
 
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param contrasena the contrasena to set
+	 */
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
-		int hash = 0;
-		hash += (usuario != null ? usuario.hashCode() : 0);
-		return hash;
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((contrasena == null) ? 0 : contrasena.hashCode());
+		result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
+		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
-	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are
-		// not set
-		if (!(object instanceof Usuario)) {
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
 			return false;
-		}
-		Usuario other = (Usuario) object;
-		if ((this.usuario == null && other.usuario != null)
-				|| (this.usuario != null && !this.usuario.equals(other.usuario))) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
+		Usuario other = (Usuario) obj;
+		if (contrasena == null) {
+			if (other.contrasena != null)
+				return false;
+		} else if (!contrasena.equals(other.contrasena))
+			return false;
+		if (usuario == null) {
+			if (other.usuario != null)
+				return false;
+		} else if (!usuario.equals(other.usuario))
+			return false;
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "com.invte.rentavoz.logica.entidades.Usuario[ usuario="
-				+ usuario + " ]";
-	}
+	
+	
+	
+	
 
 }

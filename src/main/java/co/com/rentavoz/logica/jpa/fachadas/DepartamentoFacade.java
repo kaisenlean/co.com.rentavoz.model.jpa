@@ -30,13 +30,15 @@ public class DepartamentoFacade extends AbstractFacade<Departamento> {
 	public DepartamentoFacade() {
 		super(Departamento.class);
 	}
-
+	@SuppressWarnings("unchecked")
 	public List<Departamento> findByCriterio(String criterio) {
 		Query q = getEntityManager()
 				.createQuery(
 						"SELECT d FROM Departamento d WHERE d.depNombre LIKE :criterio")
 				.setParameter("criterio", "%" + criterio + "%");
-		return q.getResultList();
+		
+		List<Departamento> resultList = q.getResultList();
+		return resultList;
 
 	}
 

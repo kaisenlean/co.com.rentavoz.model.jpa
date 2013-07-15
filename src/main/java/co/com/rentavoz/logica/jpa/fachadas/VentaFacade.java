@@ -4,12 +4,15 @@
  */
 package co.com.rentavoz.logica.jpa.fachadas;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import co.com.rentavoz.logica.jpa.entidades.Venta;
+import co.com.rentavoz.logica.jpa.entidades.almacen.EstadoVentaEnum;
+import co.com.rentavoz.logica.jpa.entidades.almacen.Venta;
 
 /**
  * 
@@ -17,6 +20,14 @@ import co.com.rentavoz.logica.jpa.entidades.Venta;
  */
 @Stateless
 public class VentaFacade extends AbstractFacade<Venta> {
+	/**
+	 * 
+	 */
+	private static final String FIELD_ESTADO = "estado";
+	/**
+	 * 
+	 */
+	private static final EstadoVentaEnum ESTADO_VENTA_ACTIVA = EstadoVentaEnum.ACTIVA;
 	@PersistenceContext(unitName = "com.innovate.rentavozPU")
 	private EntityManager em;
 
@@ -43,4 +54,14 @@ public class VentaFacade extends AbstractFacade<Venta> {
 
 	}
 
+	
+	/* (non-Javadoc)
+	 * @see co.com.rentavoz.logica.jpa.fachadas.AbstractFacade#findAll()
+	 */
+	@Override
+	public List<Venta> findAll() {
+	Query query = getEntityManager().createQuery("SELECT v FROM Venta v WHERE v.estadoVenta = :estado");
+	query.setParameter(FIELD_ESTADO, ESTADO_VENTA_ACTIVA);
+	return query.getResultList();
+	}
 }
