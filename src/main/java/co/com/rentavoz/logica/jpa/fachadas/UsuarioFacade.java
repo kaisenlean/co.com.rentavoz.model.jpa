@@ -7,6 +7,7 @@ package co.com.rentavoz.logica.jpa.fachadas;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import co.com.rentavoz.logica.jpa.entidades.Usuario;
 
@@ -33,4 +34,15 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
 		super(Usuario.class);
 	}
 
+	public Usuario login(String usuario , String contrasena) throws Exception{
+		
+	Query query= getEntityManager().createQuery("SELECT u FROM Usuario u WHERE u.usuario =:usuario AND u.contrasena = :contrasena");
+		query.setParameter("usuario", usuario);
+		query.setParameter("contrasena", contrasena);
+		
+		query.setMaxResults(1);
+		
+		return (Usuario) query.getSingleResult();
+		
+	}
 }

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.com.rentavoz.logica.jpa.entidades;
+package co.com.rentavoz.logica.jpa.entidades.almacen;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -27,13 +27,20 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
-import co.com.rentavoz.logica.jpa.entidades.almacen.VentaLinea;
+import co.com.rentavoz.logica.jpa.entidades.Empresa;
+import co.com.rentavoz.logica.jpa.entidades.EstadoLinea;
+import co.com.rentavoz.logica.jpa.entidades.Plan;
+import co.com.rentavoz.logica.jpa.entidades.PlanLinea;
+import co.com.rentavoz.logica.jpa.entidades.SucursalLinea;
 
 /**
- * 
- * @author ejody
+ * S
+* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+* @project co.com.rentavoz.model.jpa
+* @class Linea
+* @date 17/07/2013
+*
  */
 @Entity
 @Table(name = "Linea")
@@ -88,14 +95,33 @@ public class Linea implements Serializable {
 	@Transient
 	private boolean seleccionado;
 
+	/**
+	 * 
+	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	* @date 17/07/2013
+	 */
 	public Linea() {
 		plan = new Plan();
 	}
-
+/**
+ * 
+* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+* @date 17/07/2013
+* @param idLinea
+ */
 	public Linea(Integer idLinea) {
 		this.idLinea = idLinea;
 	}
 
+	/**
+	 * 
+	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	* @date 17/07/2013
+	* @param idLinea
+	* @param linNumero
+	* @param linCorte
+	* @param fecha
+	 */
 	public Linea(Integer idLinea, String linNumero, int linCorte, Date fecha) {
 		this.idLinea = idLinea;
 		this.linNumero = linNumero;
@@ -103,126 +129,7 @@ public class Linea implements Serializable {
 		this.fecha = fecha;
 	}
 
-	public Integer getIdLinea() {
-		return idLinea;
-	}
-
-	public void setIdLinea(Integer idLinea) {
-		this.idLinea = idLinea;
-	}
-
-	public String getLinNumero() {
-		return linNumero;
-	}
-
-	public void setLinNumero(String linNumero) {
-		this.linNumero = linNumero;
-	}
-
-	public int getLinCorte() {
-		return linCorte;
-	}
-
-	public void setLinCorte(int linCorte) {
-		this.linCorte = linCorte;
-	}
-
-	public Date getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
-
-	@XmlTransient
-	public List<SucursalLinea> getSucursalLineaList() {
-		return sucursalLineaList;
-	}
-
-	public void setSucursalLineaList(List<SucursalLinea> sucursalLineaList) {
-		this.sucursalLineaList = sucursalLineaList;
-	}
-
-	@XmlTransient
-	public List<PlanLinea> getPlanLineaList() {
-		return planLineaList;
-	}
-
-	public void setPlanLineaList(List<PlanLinea> planLineaList) {
-		this.planLineaList = planLineaList;
-	}
-
-	@XmlTransient
-	public List<VentaLinea> getVentaLineaList() {
-		return ventaLineaList;
-	}
-
-	public void setVentaLineaList(List<VentaLinea> ventaLineaList) {
-		this.ventaLineaList = ventaLineaList;
-	}
-
-	public EstadoLinea getEstadoLineaidEstadoLinea() {
-		return estadoLineaidEstadoLinea;
-	}
-
-	public void setEstadoLineaidEstadoLinea(EstadoLinea estadoLineaidEstadoLinea) {
-		this.estadoLineaidEstadoLinea = estadoLineaidEstadoLinea;
-	}
-
-	public Empresa getEmpresaidEmpresa() {
-		return empresaidEmpresa;
-	}
-
-	public void setEmpresaidEmpresa(Empresa empresaidEmpresa) {
-		this.empresaidEmpresa = empresaidEmpresa;
-	}
-
-	/**
-	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 * @date 2/06/2013
-	 * @return the plan
-	 */
-	public Plan getPlan() {
-		return plan;
-	}
-
-	/**
-	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 * @date 2/06/2013
-	 * @param plan
-	 *            the plan to set
-	 */
-	public void setPlan(Plan plan) {
-		this.plan = plan;
-	}
-
-	/**
-	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 * @date 2/06/2013
-	 * @return the seleccionado
-	 */
-	public boolean isSeleccionado() {
-		return seleccionado;
-	}
-
-	/**
-	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 * @date 2/06/2013
-	 * @param seleccionado
-	 *            the seleccionado to set
-	 */
-	public void setSeleccionado(boolean seleccionado) {
-		this.seleccionado = seleccionado;
-	}
-
-	public Simcard getSimcard() {
-		return simcard;
-	}
-
-	public void setSimcard(Simcard simcard) {
-		this.simcard = simcard;
-	}
+	
 
 	@Override
 	public int hashCode() {
@@ -233,8 +140,7 @@ public class Linea implements Serializable {
 
 	@Override
 	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are
-		// not set
+
 		if (!(object instanceof Linea)) {
 			return false;
 		}
@@ -250,6 +156,198 @@ public class Linea implements Serializable {
 	public String toString() {
 		return "com.invte.rentavoz.logica.entidades.Linea[ idLinea=" + idLinea
 				+ " ]";
+	}
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the idLinea
+	 */
+	public Integer getIdLinea() {
+		return idLinea;
+	}
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param idLinea the idLinea to set
+	 */
+	public void setIdLinea(Integer idLinea) {
+		this.idLinea = idLinea;
+	}
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the linNumero
+	 */
+	public String getLinNumero() {
+		return linNumero;
+	}
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param linNumero the linNumero to set
+	 */
+	public void setLinNumero(String linNumero) {
+		this.linNumero = linNumero;
+	}
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the linCorte
+	 */
+	public int getLinCorte() {
+		return linCorte;
+	}
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param linCorte the linCorte to set
+	 */
+	public void setLinCorte(int linCorte) {
+		this.linCorte = linCorte;
+	}
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the fecha
+	 */
+	public Date getFecha() {
+		return fecha;
+	}
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param fecha the fecha to set
+	 */
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the sucursalLineaList
+	 */
+	public List<SucursalLinea> getSucursalLineaList() {
+		return sucursalLineaList;
+	}
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param sucursalLineaList the sucursalLineaList to set
+	 */
+	public void setSucursalLineaList(List<SucursalLinea> sucursalLineaList) {
+		this.sucursalLineaList = sucursalLineaList;
+	}
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the planLineaList
+	 */
+	public List<PlanLinea> getPlanLineaList() {
+		return planLineaList;
+	}
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param planLineaList the planLineaList to set
+	 */
+	public void setPlanLineaList(List<PlanLinea> planLineaList) {
+		this.planLineaList = planLineaList;
+	}
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the ventaLineaList
+	 */
+	public List<VentaLinea> getVentaLineaList() {
+		return ventaLineaList;
+	}
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param ventaLineaList the ventaLineaList to set
+	 */
+	public void setVentaLineaList(List<VentaLinea> ventaLineaList) {
+		this.ventaLineaList = ventaLineaList;
+	}
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the estadoLineaidEstadoLinea
+	 */
+	public EstadoLinea getEstadoLineaidEstadoLinea() {
+		return estadoLineaidEstadoLinea;
+	}
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param estadoLineaidEstadoLinea the estadoLineaidEstadoLinea to set
+	 */
+	public void setEstadoLineaidEstadoLinea(EstadoLinea estadoLineaidEstadoLinea) {
+		this.estadoLineaidEstadoLinea = estadoLineaidEstadoLinea;
+	}
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the empresaidEmpresa
+	 */
+	public Empresa getEmpresaidEmpresa() {
+		return empresaidEmpresa;
+	}
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param empresaidEmpresa the empresaidEmpresa to set
+	 */
+	public void setEmpresaidEmpresa(Empresa empresaidEmpresa) {
+		this.empresaidEmpresa = empresaidEmpresa;
+	}
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the plan
+	 */
+	public Plan getPlan() {
+		return plan;
+	}
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param plan the plan to set
+	 */
+	public void setPlan(Plan plan) {
+		this.plan = plan;
+	}
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the simcard
+	 */
+	public Simcard getSimcard() {
+		return simcard;
+	}
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param simcard the simcard to set
+	 */
+	public void setSimcard(Simcard simcard) {
+		this.simcard = simcard;
+	}
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the seleccionado
+	 */
+	public boolean isSeleccionado() {
+		return seleccionado;
+	}
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param seleccionado the seleccionado to set
+	 */
+	public void setSeleccionado(boolean seleccionado) {
+		this.seleccionado = seleccionado;
 	}
 
 }

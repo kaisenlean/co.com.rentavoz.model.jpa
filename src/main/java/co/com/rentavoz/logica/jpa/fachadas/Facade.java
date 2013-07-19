@@ -6,13 +6,11 @@ package co.com.rentavoz.logica.jpa.fachadas;
 
 import java.util.List;
 
-import javax.ejb.Local;
-
 /**
  * 
  * @author ejody
  */
-@Local
+
 interface Facade<T> {
 
 	void create(T entity);

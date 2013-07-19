@@ -46,10 +46,15 @@ public class VentaLineaFacade extends AbstractFacade<VentaLinea>  {
 	public VentaLineaFacade() {
 		super(VentaLinea.class);
 	}
-/*
- * (non-Javadoc)
- * @see co.com.rentavoz.logica.jpa.fachadas.VentaLineaDao#buscarLineasPorRenovar(java.util.Date, java.util.Date)
- */
+	/**
+	 * 
+	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	* @date 17/07/2013
+	* @param start
+	* @param end
+	* @return
+	 */
+	@SuppressWarnings("unchecked")
 	public List<VentaLinea> buscarLineasPorRenovar(Date start , Date end) {
 		Query q = getEntityManager()
 				.createQuery(
@@ -62,22 +67,22 @@ public class VentaLineaFacade extends AbstractFacade<VentaLinea>  {
 		return resultList;
 	}
 
-/**
- * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
- * @date 2/06/2013
- * @return the em
- */
-public EntityManager getEm() {
-	return em;
-}
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the em
+	 */
+	public EntityManager getEm() {
+		return em;
+	}
 
-/**
- *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
- *@date 2/06/2013
- * @param em the em to set
- */
-public void setEm(EntityManager em) {
-	this.em = em;
-}
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param em the em to set
+	 */
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
 	
 }

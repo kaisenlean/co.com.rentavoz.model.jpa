@@ -52,6 +52,7 @@ public class PlanFacade extends AbstractFacade<Plan> {
 	 * @param criterio
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	public List<Plan> findByCriterio(String criterio) {
 		Query q = getEntityManager().createQuery(
 				"SELECT p FROM Plan p WHERE p.plaNombre LIKE :criterio");

@@ -37,6 +37,7 @@ public class TerceroFacade extends AbstractFacade<Tercero> implements
 		super(Tercero.class);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Tercero> findByCriterio(String criterio) {
 		Query q = getEntityManager()
 				.createQuery(

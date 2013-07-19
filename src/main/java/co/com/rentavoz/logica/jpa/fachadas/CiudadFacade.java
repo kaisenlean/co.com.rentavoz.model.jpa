@@ -53,6 +53,7 @@ public class CiudadFacade extends AbstractFacade<Ciudad> {
 	* @param departamento
 	* @return
 	 */
+	@SuppressWarnings("unchecked")
 	public List<Ciudad> findByCriterio(String criterio,
 			Departamento departamento) {
 		Query q = getEntityManager()

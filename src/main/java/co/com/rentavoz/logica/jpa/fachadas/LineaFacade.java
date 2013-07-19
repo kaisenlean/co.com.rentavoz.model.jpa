@@ -11,7 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import co.com.rentavoz.logica.jpa.entidades.Linea;
+import co.com.rentavoz.logica.jpa.entidades.almacen.Linea;
 
 /**
  * 
@@ -87,6 +87,7 @@ public class LineaFacade extends AbstractFacade<Linea> {
 			return false;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Linea> findDisponibles() {
 		// buscar las lineas en estado disponibles
 		Query q = getEntityManager()

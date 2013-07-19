@@ -8,7 +8,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import co.com.rentavoz.logica.jpa.entidades.Simcard;
+import co.com.rentavoz.logica.jpa.entidades.almacen.Simcard;
 
 /**
  * 

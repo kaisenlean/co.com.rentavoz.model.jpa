@@ -58,6 +58,7 @@ public class VentaFacade extends AbstractFacade<Venta> {
 	/* (non-Javadoc)
 	 * @see co.com.rentavoz.logica.jpa.fachadas.AbstractFacade#findAll()
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Venta> findAll() {
 	Query query = getEntityManager().createQuery("SELECT v FROM Venta v WHERE v.estadoVenta = :estado");
