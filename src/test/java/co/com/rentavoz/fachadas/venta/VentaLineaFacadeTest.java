@@ -28,6 +28,7 @@ public class VentaLineaFacadeTest extends BaseFacadeTest  {
 
 	
 
+
 	private   VentaLineaFacade ventaLineaFacade;
 
 

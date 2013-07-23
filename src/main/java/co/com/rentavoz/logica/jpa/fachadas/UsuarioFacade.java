@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import co.com.rentavoz.logica.jpa.entidades.Usuario;
+import co.com.rentavoz.logica.jpa.entidades.profile.Usuario;
 
 
 /**

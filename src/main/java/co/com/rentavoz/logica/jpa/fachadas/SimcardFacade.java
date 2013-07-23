@@ -4,10 +4,14 @@
  */
 package co.com.rentavoz.logica.jpa.fachadas;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
+import co.com.rentavoz.logica.jpa.entidades.almacen.EstadosSimcardEnum;
 import co.com.rentavoz.logica.jpa.entidades.almacen.Simcard;
 
 /**
@@ -26,6 +30,20 @@ public class SimcardFacade extends AbstractFacade<Simcard> {
 
 	public SimcardFacade() {
 		super(Simcard.class);
+	}
+
+	/**
+	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	* @date 22/07/2013
+	* @return
+	*/
+	@SuppressWarnings("unchecked")
+	public List<Simcard> findDisponibles(String criteria) {
+		Query query = getEntityManager().createQuery("SELECT s FROM Simcard s WHERE s.simEstado = :estado AND s.simIccid LIKE :criterio ");
+		query.setParameter("estado", EstadosSimcardEnum.DISPONIBLE);
+		query.setParameter("criterio", "%"+criteria+"%");
+		
+		return query.getResultList();
 	}
 
 }

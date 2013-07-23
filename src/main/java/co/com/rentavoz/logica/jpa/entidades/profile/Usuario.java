@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.com.rentavoz.logica.jpa.entidades;
+package co.com.rentavoz.logica.jpa.entidades.profile;
 
 import java.io.Serializable;
 

@@ -29,8 +29,7 @@ import javax.validation.constraints.Size;
 public class Banco implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
-	@Basic(optional = false)
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idBanco")
 	private Integer idBanco;
 	@Basic(optional = false)
