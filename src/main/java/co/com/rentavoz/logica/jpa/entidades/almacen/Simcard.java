@@ -17,6 +17,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -27,11 +29,16 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import co.com.rentavoz.logica.jpa.entidades.Sucursal;
 import co.com.rentavoz.logica.jpa.entidades.SucursalSimcard;
 
 /**
  * 
- * @author ejody
+* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+* @project co.com.rentavoz.model.jpa
+* @class Simcard
+* @date 24/07/2013
+*
  */
 @Entity
 @Table(name = "Simcard")
@@ -67,6 +74,10 @@ public class Simcard implements Serializable {
 	private List<SucursalSimcard> sucursalSimcardList;
 	@OneToMany(mappedBy = "simcard")
 	private List<Linea> lineas;
+	
+	@JoinColumn(name="sucursal",referencedColumnName="idSucursal")
+	@ManyToOne
+	private Sucursal sucursal;
 
 	/**
 	 * 
@@ -251,6 +262,23 @@ public class Simcard implements Serializable {
 	public String getEstadoAsString(){
 		return simEstado==null?"":simEstado.name();
 		
+	}
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the sucursal
+	 */
+	public Sucursal getSucursal() {
+		return sucursal;
+	}
+	
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param sucursal the sucursal to set
+	 */
+	public void setSucursal(Sucursal sucursal) {
+		this.sucursal = sucursal;
 	}
 
 }

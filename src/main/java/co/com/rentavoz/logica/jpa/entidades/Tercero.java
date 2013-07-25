@@ -11,9 +11,13 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -23,6 +27,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+
+import co.com.rentavoz.logica.jpa.entidades.profile.Usuario;
 
 /**
  * 
@@ -38,13 +44,11 @@ import javax.xml.bind.annotation.XmlTransient;
 		@NamedQuery(name = "Tercero.findByTerApellidos", query = "SELECT t FROM Tercero t WHERE t.terApellidos = :terApellidos"),
 		@NamedQuery(name = "Tercero.findByTerTelefono", query = "SELECT t FROM Tercero t WHERE t.terTelefono = :terTelefono"),
 		@NamedQuery(name = "Tercero.findByTerDireccion", query = "SELECT t FROM Tercero t WHERE t.terDireccion = :terDireccion"),
-		@NamedQuery(name = "Tercero.findByTerDocumento", query = "SELECT t FROM Tercero t WHERE t.terDocumento = :terDocumento"),
-		@NamedQuery(name = "Tercero.findByTerClave", query = "SELECT t FROM Tercero t WHERE t.terClave = :terClave") })
+		@NamedQuery(name = "Tercero.findByTerDocumento", query = "SELECT t FROM Tercero t WHERE t.terDocumento = :terDocumento")})
 public class Tercero implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Basic(optional = false)
 	@Column(name = "idTecero")
 	private Integer idTecero;
 	@Basic(optional = false)
@@ -69,11 +73,11 @@ public class Tercero implements Serializable {
 	@NotNull
 	@Column(name = "terDocumento")
 	private int terDocumento;
-	@Basic(optional = false)
-	@NotNull
-	@Size(min = 1, max = 60)
-	@Column(name = "terClave")
-	private String terClave;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="tipo")
+	private TipoTerceroEnum tipo;
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "terceroidTecero")
 	private List<TerceroVenta> terceroVentaList;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "terceroidTecero")
@@ -86,6 +90,11 @@ public class Tercero implements Serializable {
 	@Transient
 	private String repTerClave;
 
+	
+	@JoinColumn(name="usuario",referencedColumnName="usuario")
+	@ManyToOne
+	private Usuario usuario;
+	
 	public Tercero() {
 	}
 
@@ -94,13 +103,13 @@ public class Tercero implements Serializable {
 	}
 
 	public Tercero(Integer idTecero, String terNombre, String terTelefono,
-			String terDireccion, int terDocumento, String terClave) {
+			String terDireccion, int terDocumento) {
 		this.idTecero = idTecero;
 		this.terNombre = terNombre;
 		this.terTelefono = terTelefono;
 		this.terDireccion = terDireccion;
 		this.terDocumento = terDocumento;
-		this.terClave = terClave;
+		
 	}
 
 	public Integer getIdTecero() {
@@ -151,13 +160,7 @@ public class Tercero implements Serializable {
 		this.terDocumento = terDocumento;
 	}
 
-	public String getTerClave() {
-		return terClave;
-	}
 
-	public void setTerClave(String terClave) {
-		this.terClave = terClave;
-	}
 
 	@XmlTransient
 	public List<TerceroVenta> getTerceroVentaList() {
@@ -204,8 +207,7 @@ public class Tercero implements Serializable {
 
 	@Override
 	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are
-		// not set
+	
 		if (!(object instanceof Tercero)) {
 			return false;
 		}
@@ -225,7 +227,45 @@ public class Tercero implements Serializable {
 	public void setRepTerClave(String repTerClave) {
 		this.repTerClave = repTerClave;
 	}
+/**
+ * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+ * @date 2/06/2013
+ * @return the tipo
+ */
+public TipoTerceroEnum getTipo() {
+	return tipo;
+}
 
+
+/**
+ * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+ * @date 2/06/2013
+ * @return the usuario
+ */
+public Usuario getUsuario() {
+	return usuario;
+}
+
+
+/**
+ *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+ *@date 2/06/2013
+ * @param usuario the usuario to set
+ */
+public void setUsuario(Usuario usuario) {
+	this.usuario = usuario;
+}
+
+
+
+/**
+ *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+ *@date 2/06/2013
+ * @param tipo the tipo to set
+ */
+public void setTipo(TipoTerceroEnum tipo) {
+	this.tipo = tipo;
+}
 	@Override
 	public String toString() {
 		return terNombre + " " + terApellidos + " [ " + terDocumento + " ]";

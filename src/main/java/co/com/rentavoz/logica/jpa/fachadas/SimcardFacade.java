@@ -46,4 +46,23 @@ public class SimcardFacade extends AbstractFacade<Simcard> {
 		return query.getResultList();
 	}
 
+	/**
+	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	* @date 23/07/2013
+	* @param simIccid
+	* @return
+	*/
+	public Simcard findByScId(String simIccid) throws Exception {
+		Query query = getEntityManager().createQuery("SELECT s FROM Simcard s WHERE s.simIccid = :id");
+		query.setParameter("id", simIccid);
+		query.setMaxResults(1);
+		
+		if (query.getResultList().isEmpty()) {
+			return null;
+		}else{
+			
+		return (Simcard) query.getSingleResult();
+		}
+	}
+
 }

@@ -13,6 +13,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import co.com.rentavoz.logica.jpa.entidades.Tercero;
+import co.com.rentavoz.logica.jpa.entidades.profile.Usuario;
 
 /**
  * 
@@ -63,6 +64,24 @@ public class TerceroFacade extends AbstractFacade<Tercero> implements
 			return (Tercero) query.getSingleResult();
 
 		}
+	}
+
+	/**
+	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	* @date 24/07/2013
+	* @param user
+	* @return
+	*/
+	public Tercero findByUsuario(Usuario user) {
+	Query query = getEntityManager().createQuery("SELECT t FROM Tercero t WHERE t.usuario = :usuario");
+	query.setParameter("usuario", user);
+	query.setMaxResults(1);
+	if (!query.getResultList().isEmpty()) {
+		return (Tercero) query.getSingleResult();
+	}else{
+		return null;
+		
+	}
 	}
 
 }

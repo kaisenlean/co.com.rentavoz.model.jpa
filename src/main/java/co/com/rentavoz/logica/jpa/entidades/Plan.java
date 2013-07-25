@@ -5,6 +5,7 @@
 package co.com.rentavoz.logica.jpa.entidades;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -49,7 +50,6 @@ public class Plan implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Basic(optional = false)
 	@Column(name = "idPlan")
 	private Integer idPlan;
 	@Basic(optional = false)
@@ -93,6 +93,8 @@ public class Plan implements Serializable {
 	@JoinColumn(name = "Operador_idOperador", referencedColumnName = "idOperador")
 	@ManyToOne(optional = false)
 	private Operador operadoridOperador;
+	
+	
 
 	public Plan() {
 	}
@@ -212,6 +214,11 @@ public class Plan implements Serializable {
 		this.operadoridOperador = operadoridOperador;
 	}
 
+	
+	public String getVencimiento(){
+		return new SimpleDateFormat("dd/MM/yyyy").format(plaFechaVenc).toString();
+		
+	}
 	@Override
 	public int hashCode() {
 		int hash = 0;
