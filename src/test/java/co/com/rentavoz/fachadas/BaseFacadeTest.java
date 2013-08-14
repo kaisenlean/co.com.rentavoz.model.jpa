@@ -6,7 +6,6 @@ package co.com.rentavoz.fachadas;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
-
 /**
  * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
  * @project co.com.rentavoz.model.jpa

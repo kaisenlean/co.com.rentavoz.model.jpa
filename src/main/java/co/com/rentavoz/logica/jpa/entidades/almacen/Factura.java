@@ -21,11 +21,11 @@ import javax.validation.constraints.Size;
 
 /**
  * 
-* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-* @project co.com.rentavoz.model.jpa
-* @class Factura
-* @date 14/07/2013
-*
+ * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+ * @project co.com.rentavoz.model.jpa
+ * @class Factura
+ * @date 14/07/2013
+ * 
  */
 @Entity
 @Table(name = "banco")
@@ -48,50 +48,50 @@ public class Factura implements Serializable {
 	private Date fecha;
 
 	@Basic(optional = true)
-	@Column(name = "iva" )
+	@Column(name = "iva")
 	private Double iva;
 
 	@Basic(optional = true)
-	@Column(name = "saldo" )
+	@Column(name = "saldo")
 	private Double saldo;
-	
+
 	@Basic(optional = true)
-	@Column(name = "extra" )
+	@Column(name = "extra")
 	private Double extra;
-	
+
 	@Basic(optional = true)
-	@Column(name = "total" )
+	@Column(name = "total")
 	private Double total;
 
 	/**
-	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	* @date 14/07/2013
-	*/
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 14/07/2013
+	 */
 	public Factura() {
 		super();
 	}
 
 	/**
-	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	* @date 14/07/2013
-	* @param numero
-	*/
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 14/07/2013
+	 * @param numero
+	 */
 	public Factura(Integer numero) {
 		super();
 		this.numero = numero;
 	}
 
 	/**
-	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	* @date 14/07/2013
-	* @param numero
-	* @param numeroLinnea
-	* @param fecha
-	* @param iva
-	* @param saldo
-	* @param extra
-	* @param total
-	*/
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 14/07/2013
+	 * @param numero
+	 * @param numeroLinnea
+	 * @param fecha
+	 * @param iva
+	 * @param saldo
+	 * @param extra
+	 * @param total
+	 */
 	public Factura(Integer numero, String numeroLinnea, Date fecha, Double iva,
 			Double saldo, Double extra, Double total) {
 		super();
@@ -114,9 +114,10 @@ public class Factura implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param numero the numero to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param numero
+	 *            the numero to set
 	 */
 	public void setNumero(Integer numero) {
 		this.numero = numero;
@@ -132,9 +133,10 @@ public class Factura implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param numeroLinnea the numeroLinnea to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param numeroLinnea
+	 *            the numeroLinnea to set
 	 */
 	public void setNumeroLinnea(String numeroLinnea) {
 		this.numeroLinnea = numeroLinnea;
@@ -150,9 +152,10 @@ public class Factura implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param fecha the fecha to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param fecha
+	 *            the fecha to set
 	 */
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
@@ -168,9 +171,10 @@ public class Factura implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param iva the iva to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param iva
+	 *            the iva to set
 	 */
 	public void setIva(Double iva) {
 		this.iva = iva;
@@ -186,9 +190,10 @@ public class Factura implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param saldo the saldo to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param saldo
+	 *            the saldo to set
 	 */
 	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
@@ -204,9 +209,10 @@ public class Factura implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param extra the extra to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param extra
+	 *            the extra to set
 	 */
 	public void setExtra(Double extra) {
 		this.extra = extra;
@@ -222,15 +228,18 @@ public class Factura implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param total the total to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param total
+	 *            the total to set
 	 */
 	public void setTotal(Double total) {
 		this.total = total;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -243,7 +252,9 @@ public class Factura implements Serializable {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -268,7 +279,9 @@ public class Factura implements Serializable {
 		return true;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -277,8 +290,5 @@ public class Factura implements Serializable {
 				+ ", fecha=" + fecha + ", iva=" + iva + ", saldo=" + saldo
 				+ ", extra=" + extra + ", total=" + total + "]";
 	}
-
-	
-	
 
 }

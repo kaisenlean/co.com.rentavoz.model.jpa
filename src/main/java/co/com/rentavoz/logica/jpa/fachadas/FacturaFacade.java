@@ -12,11 +12,11 @@ import co.com.rentavoz.logica.jpa.entidades.almacen.Factura;
 
 /**
  * 
-* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-* @project co.com.rentavoz.model.jpa
-* @class FacturaFacade
-* @date 14/07/2013
-*
+ * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+ * @project co.com.rentavoz.model.jpa
+ * @class FacturaFacade
+ * @date 14/07/2013
+ * 
  */
 @Stateless
 public class FacturaFacade extends AbstractFacade<Factura> {
@@ -30,8 +30,8 @@ public class FacturaFacade extends AbstractFacade<Factura> {
 
 	/**
 	 * 
-	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	* @date 14/07/2013
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 14/07/2013
 	 */
 	public FacturaFacade() {
 		super(Factura.class);

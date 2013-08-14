@@ -19,11 +19,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * 
-* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-* @project co.com.rentavoz.model.jpa
-* @class Usuario
-* @date 13/07/2013
-*
+ * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+ * @project co.com.rentavoz.model.jpa
+ * @class Usuario
+ * @date 13/07/2013
+ * 
  */
 @Entity
 @Table(name = "usuario")
@@ -49,19 +49,19 @@ public class Usuario implements Serializable {
 
 	/**
 	 * 
-	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	* @date 13/07/2013
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 13/07/2013
 	 */
 	public Usuario() {
 	}
 
 	/**
-	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	* @date 13/07/2013
-	* @param usuario
-	* @param administrador
-	* @param contrasena
-	*/
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 13/07/2013
+	 * @param usuario
+	 * @param administrador
+	 * @param contrasena
+	 */
 	public Usuario(String usuario, Character administrador, String contrasena) {
 		super();
 		this.usuario = usuario;
@@ -79,9 +79,10 @@ public class Usuario implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param usuario the usuario to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param usuario
+	 *            the usuario to set
 	 */
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
@@ -97,9 +98,10 @@ public class Usuario implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param administrador the administrador to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param administrador
+	 *            the administrador to set
 	 */
 	public void setAdministrador(Character administrador) {
 		this.administrador = administrador;
@@ -115,15 +117,18 @@ public class Usuario implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param contrasena the contrasena to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param contrasena
+	 *            the contrasena to set
 	 */
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -136,7 +141,9 @@ public class Usuario implements Serializable {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -160,10 +167,5 @@ public class Usuario implements Serializable {
 			return false;
 		return true;
 	}
-
-	
-	
-	
-	
 
 }

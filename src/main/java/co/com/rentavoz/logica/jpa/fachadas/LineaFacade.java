@@ -19,6 +19,12 @@ import co.com.rentavoz.logica.jpa.entidades.almacen.Linea;
  */
 @Stateless
 public class LineaFacade extends AbstractFacade<Linea> {
+	/**
+	 * co.com.rentavoz.logica.jpa.fachadas
+	 * co.com.rentavoz.model.jpa
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 */
+	private static final int ESTADO_LINEA_DISPONIBLE_USO = 4;
 	private static final Integer ESTADO_LINEA_ACTIVO = 1;
 	@PersistenceContext(unitName = "com.innovate.rentavozPU")
 	private EntityManager em;
@@ -61,14 +67,22 @@ public class LineaFacade extends AbstractFacade<Linea> {
 
 	}
 
+	/**
+	 * 
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 29/07/2013
+	 * @param linNumero
+	 * @return
+	 */
 	public Linea findBNumeroObjeto(String linNumero) {
 		Query q = getEntityManager().createQuery(
-				"SELECT l FROM Linea l WHERE l.linNumero = :numero");
+				"SELECT l FROM Linea l WHERE l.linNumero = :numero AND  l.estadoLineaidEstadoLinea.idEstadoLinea = :estado");
 		q.setParameter("numero", linNumero);
+		q.setParameter("estado", ESTADO_LINEA_ACTIVO);
 		q.setMaxResults(1);
 		if (q.getResultList().isEmpty()) {
 			return null;
-		} else if (q.getSingleResult() == null) {
+		} else if (q.getSingleResult() != null) {
 			return (Linea) q.getSingleResult();
 		} else {
 			return null;
@@ -76,6 +90,13 @@ public class LineaFacade extends AbstractFacade<Linea> {
 
 	}
 
+	/**
+	 * 
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 29/07/2013
+	 * @param linNumero
+	 * @return
+	 */
 	public boolean findBNumero2(String linNumero) {
 		Query q = getEntityManager().createQuery(
 				"SELECT l FROM Linea l WHERE l.linNumero = :numero");
@@ -111,6 +132,13 @@ public class LineaFacade extends AbstractFacade<Linea> {
 		return query.getResultList();
 	}
 
+	/**
+	 * 
+	 * 
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 29/07/2013
+	 * @return
+	 */
 	public int countPlayersTotal() {
 
 		Query query = getEntityManager()
@@ -123,6 +151,39 @@ public class LineaFacade extends AbstractFacade<Linea> {
 
 		return result.intValue();
 
+	}
+
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 29/07/2013
+	 * @param query
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Linea> findByCriteria(String query) {
+		Query q = getEntityManager().createQuery(
+				"SELECT l FROM Linea l WHERE l.linNumero LIKE :query AND  l.estadoLineaidEstadoLinea.idEstadoLinea = :estado ");
+		q.setParameter("query", "%" + query + "%");
+		q.setParameter("estado", ESTADO_LINEA_ACTIVO);
+		return q.getResultList();
+	}
+
+	/**
+	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	* @date 1/08/2013
+	* @param query
+	* @param idSucursal
+	* @return
+	*/
+	@SuppressWarnings("unchecked")
+	public List<Linea> findByCriteria(String query, int idSucursal) {
+		Query q = getEntityManager().createQuery(
+				"SELECT l FROM Linea l WHERE l.linNumero LIKE :query AND ( l.estadoLineaidEstadoLinea.idEstadoLinea = :estado OR l.estadoLineaidEstadoLinea.idEstadoLinea = :estado2) AND l.sucursal.idSucursal = :sucursal");
+		q.setParameter("query", "%" + query + "%");
+		q.setParameter("sucursal", idSucursal);
+		q.setParameter("estado", ESTADO_LINEA_ACTIVO);
+		q.setParameter("estado2", ESTADO_LINEA_DISPONIBLE_USO);
+		return q.getResultList();
 	}
 
 }

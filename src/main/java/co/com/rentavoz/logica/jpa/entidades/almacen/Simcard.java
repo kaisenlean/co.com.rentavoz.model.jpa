@@ -34,11 +34,11 @@ import co.com.rentavoz.logica.jpa.entidades.SucursalSimcard;
 
 /**
  * 
-* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-* @project co.com.rentavoz.model.jpa
-* @class Simcard
-* @date 24/07/2013
-*
+ * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+ * @project co.com.rentavoz.model.jpa
+ * @class Simcard
+ * @date 24/07/2013
+ * 
  */
 @Entity
 @Table(name = "Simcard")
@@ -74,8 +74,8 @@ public class Simcard implements Serializable {
 	private List<SucursalSimcard> sucursalSimcardList;
 	@OneToMany(mappedBy = "simcard")
 	private List<Linea> lineas;
-	
-	@JoinColumn(name="sucursal",referencedColumnName="idSucursal")
+
+	@JoinColumn(name = "sucursal", referencedColumnName = "idSucursal")
 	@ManyToOne
 	private Sucursal sucursal;
 
@@ -114,8 +114,6 @@ public class Simcard implements Serializable {
 		this.fecha = fecha;
 	}
 
-	
-	
 	@Override
 	public int hashCode() {
 		int hash = 0;
@@ -155,9 +153,10 @@ public class Simcard implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param idSimcard the idSimcard to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param idSimcard
+	 *            the idSimcard to set
 	 */
 	public void setIdSimcard(Integer idSimcard) {
 		this.idSimcard = idSimcard;
@@ -173,9 +172,10 @@ public class Simcard implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param simIccid the simIccid to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param simIccid
+	 *            the simIccid to set
 	 */
 	public void setSimIccid(String simIccid) {
 		this.simIccid = simIccid;
@@ -191,9 +191,10 @@ public class Simcard implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param simEstado the simEstado to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param simEstado
+	 *            the simEstado to set
 	 */
 	public void setSimEstado(EstadosSimcardEnum simEstado) {
 		this.simEstado = simEstado;
@@ -209,9 +210,10 @@ public class Simcard implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param fecha the fecha to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param fecha
+	 *            the fecha to set
 	 */
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
@@ -227,9 +229,10 @@ public class Simcard implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param sucursalSimcardList the sucursalSimcardList to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param sucursalSimcardList
+	 *            the sucursalSimcardList to set
 	 */
 	public void setSucursalSimcardList(List<SucursalSimcard> sucursalSimcardList) {
 		this.sucursalSimcardList = sucursalSimcardList;
@@ -245,24 +248,26 @@ public class Simcard implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param lineas the lineas to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param lineas
+	 *            the lineas to set
 	 */
 	public void setLineas(List<Linea> lineas) {
 		this.lineas = lineas;
 	}
-	
+
 	/**
 	 * 
-	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	* @date 17/07/2013
-	* @return
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 17/07/2013
+	 * @return
 	 */
-	public String getEstadoAsString(){
-		return simEstado==null?"":simEstado.name();
-		
+	public String getEstadoAsString() {
+		return simEstado == null ? "" : simEstado.name();
+
 	}
+
 	/**
 	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
 	 * @date 2/06/2013
@@ -271,11 +276,12 @@ public class Simcard implements Serializable {
 	public Sucursal getSucursal() {
 		return sucursal;
 	}
-	
+
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param sucursal the sucursal to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param sucursal
+	 *            the sucursal to set
 	 */
 	public void setSucursal(Sucursal sucursal) {
 		this.sucursal = sucursal;

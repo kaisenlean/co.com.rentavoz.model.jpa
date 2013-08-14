@@ -67,21 +67,22 @@ public class TerceroFacade extends AbstractFacade<Tercero> implements
 	}
 
 	/**
-	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	* @date 24/07/2013
-	* @param user
-	* @return
-	*/
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 24/07/2013
+	 * @param user
+	 * @return
+	 */
 	public Tercero findByUsuario(Usuario user) {
-	Query query = getEntityManager().createQuery("SELECT t FROM Tercero t WHERE t.usuario = :usuario");
-	query.setParameter("usuario", user);
-	query.setMaxResults(1);
-	if (!query.getResultList().isEmpty()) {
-		return (Tercero) query.getSingleResult();
-	}else{
-		return null;
-		
-	}
+		Query query = getEntityManager().createQuery(
+				"SELECT t FROM Tercero t WHERE t.usuario = :usuario");
+		query.setParameter("usuario", user);
+		query.setMaxResults(1);
+		if (!query.getResultList().isEmpty()) {
+			return (Tercero) query.getSingleResult();
+		} else {
+			return null;
+
+		}
 	}
 
 }

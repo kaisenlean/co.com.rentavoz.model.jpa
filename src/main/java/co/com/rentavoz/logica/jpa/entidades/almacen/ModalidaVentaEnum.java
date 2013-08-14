@@ -8,9 +8,9 @@ package co.com.rentavoz.logica.jpa.entidades.almacen;
  * @project co.com.rentavoz.model.jpa
  * @class ModalidaVentaEnum
  * @date 14/07/2013
- *
+ * 
  */
 public enum ModalidaVentaEnum {
 
-	VENTA,RENOVACION,REPOSICION
+	VENTA, RENOVACION, REPOSICION
 }

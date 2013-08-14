@@ -16,11 +16,11 @@ import co.com.rentavoz.logica.jpa.entidades.Departamento;
 
 /**
  * 
-* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-* @project co.com.rentavoz.model.jpa
-* @class CiudadFacade
-* @date 30/06/2013
-*
+ * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+ * @project co.com.rentavoz.model.jpa
+ * @class CiudadFacade
+ * @date 30/06/2013
+ * 
  */
 @Stateless
 public class CiudadFacade extends AbstractFacade<Ciudad> {
@@ -47,11 +47,11 @@ public class CiudadFacade extends AbstractFacade<Ciudad> {
 
 	/**
 	 * 
-	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	* @date 30/06/2013
-	* @param criterio
-	* @param departamento
-	* @return
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 30/06/2013
+	 * @param criterio
+	 * @param departamento
+	 * @return
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Ciudad> findByCriterio(String criterio,

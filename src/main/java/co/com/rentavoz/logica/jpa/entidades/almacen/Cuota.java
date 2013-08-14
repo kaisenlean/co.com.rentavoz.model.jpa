@@ -41,44 +41,44 @@ public class Cuota implements Serializable {
 	@JoinColumn(name = "id_venta")
 	@ManyToOne
 	private Venta venta;
-	
-	
-	@Column(name="estado_cuota")
+
+	@Column(name = "estado_cuota")
 	@Enumerated(EnumType.STRING)
 	private EstadoCuotaEnum estadoCuota;
-	
-	@Column(name="valor_cuota")
+
+	@Column(name = "valor_cuota")
 	private BigDecimal valorCuota;
-	
-	@Column(name="fecha_pago")
+
+	@Column(name = "fecha_pago")
 	@Temporal(TemporalType.DATE)
 	private Date fechaPago;
+
 	/**
 	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
 	 * @date 15/07/2013
 	 */
 	public Cuota() {
-	
+
 	}
 
 	/**
-	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	* @date 15/07/2013
-	* @param numero
-	*/
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 15/07/2013
+	 * @param numero
+	 */
 	public Cuota(Integer numero) {
 		super();
 		this.numero = numero;
 	}
 
 	/**
-	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	* @date 15/07/2013
-	* @param numero
-	* @param venta
-	* @param estadoCuota
-	* @param valorCuota
-	*/
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 15/07/2013
+	 * @param numero
+	 * @param venta
+	 * @param estadoCuota
+	 * @param valorCuota
+	 */
 	public Cuota(Integer numero, Venta venta, EstadoCuotaEnum estadoCuota,
 			BigDecimal valorCuota) {
 		super();
@@ -98,9 +98,10 @@ public class Cuota implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param numero the numero to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param numero
+	 *            the numero to set
 	 */
 	public void setNumero(Integer numero) {
 		this.numero = numero;
@@ -116,9 +117,10 @@ public class Cuota implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param venta the venta to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param venta
+	 *            the venta to set
 	 */
 	public void setVenta(Venta venta) {
 		this.venta = venta;
@@ -134,9 +136,10 @@ public class Cuota implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param estadoCuota the estadoCuota to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param estadoCuota
+	 *            the estadoCuota to set
 	 */
 	public void setEstadoCuota(EstadoCuotaEnum estadoCuota) {
 		this.estadoCuota = estadoCuota;
@@ -152,9 +155,10 @@ public class Cuota implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param valorCuota the valorCuota to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param valorCuota
+	 *            the valorCuota to set
 	 */
 	public void setValorCuota(BigDecimal valorCuota) {
 		this.valorCuota = valorCuota;
@@ -170,14 +174,13 @@ public class Cuota implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param fechaPago the fechaPago to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param fechaPago
+	 *            the fechaPago to set
 	 */
 	public void setFechaPago(Date fechaPago) {
 		this.fechaPago = fechaPago;
 	}
-	
-	
-	
+
 }

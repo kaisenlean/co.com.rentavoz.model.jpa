@@ -8,8 +8,9 @@ package co.com.rentavoz.logica.jpa.entidades.almacen;
  * @project co.com.rentavoz.model.jpa
  * @class EstadosSimcardEnum
  * @date 17/07/2013
- *
+ * 
  */
 public enum EstadosSimcardEnum {
-DISPONIBLE,ASIGNADA,INACTIVA
+
+	DISPONIBLE, ASIGNADA, INACTIVA,EN_BLANCO,DESECHADA
 }

@@ -35,11 +35,11 @@ import co.com.rentavoz.logica.jpa.entidades.TerceroVenta;
 
 /**
  * 
-* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-* @project co.com.rentavoz.model.jpa
-* @class Venta
-* @date 14/07/2013
-*
+ * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+ * @project co.com.rentavoz.model.jpa
+ * @class Venta
+ * @date 14/07/2013
+ * 
  */
 @Entity
 @Table(name = "Venta")
@@ -86,45 +86,41 @@ public class Venta implements Serializable {
 	@Basic(optional = true)
 	@Column(name = "observacion")
 	private String observacion;
-	
+
 	@Enumerated(EnumType.STRING)
-	@Column(name="modalidad_venta")
+	@Column(name = "modalidad_venta")
 	private ModalidaVentaEnum modalidadVenta;
 
-	
 	@Enumerated(EnumType.STRING)
-	@Column(name="estado_venta")
+	@Column(name = "estado_venta")
 	private EstadoVentaEnum estadoVenta;
 
-	
 	@Column(name = "descuento")
 	private BigDecimal descuento;
-	
+
 	@Column(name = "fecha_renovacion")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaRenovacion;
-	
-	
+
 	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "venta")
-	private List<Cuota> cuotas=new ArrayList<Cuota>();
-	
-	
+	private List<Cuota> cuotas = new ArrayList<Cuota>();
+
 	@Transient
 	private boolean seleccionado;
-	
+
 	/**
 	 * 
-	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	* @date 14/07/2013
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 14/07/2013
 	 */
 	public Venta() {
 	}
 
 	/**
 	 * 
-	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	* @date 14/07/2013
-	* @param idVenta
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 14/07/2013
+	 * @param idVenta
 	 */
 	public Venta(Integer idVenta) {
 		this.idVenta = idVenta;
@@ -132,13 +128,13 @@ public class Venta implements Serializable {
 
 	/**
 	 * 
-	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	* @date 14/07/2013
-	* @param idVenta
-	* @param venFecha
-	* @param fecha
-	* @param venDomicilio
-	* @param venSaldo
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 14/07/2013
+	 * @param idVenta
+	 * @param venFecha
+	 * @param fecha
+	 * @param venDomicilio
+	 * @param venSaldo
 	 */
 	public Venta(Integer idVenta, Date venFecha, Date fecha,
 			BigDecimal venDomicilio, BigDecimal venSaldo) {
@@ -149,8 +145,6 @@ public class Venta implements Serializable {
 		this.venSaldo = venSaldo;
 	}
 
-	
-	
 	/**
 	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
 	 * @date 2/06/2013
@@ -208,9 +202,10 @@ public class Venta implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param idVenta the idVenta to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param idVenta
+	 *            the idVenta to set
 	 */
 	public void setIdVenta(Integer idVenta) {
 		this.idVenta = idVenta;
@@ -226,9 +221,10 @@ public class Venta implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param venFecha the venFecha to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param venFecha
+	 *            the venFecha to set
 	 */
 	public void setVenFecha(Date venFecha) {
 		this.venFecha = venFecha;
@@ -244,9 +240,10 @@ public class Venta implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param fecha the fecha to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param fecha
+	 *            the fecha to set
 	 */
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
@@ -262,9 +259,10 @@ public class Venta implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param venDomicilio the venDomicilio to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param venDomicilio
+	 *            the venDomicilio to set
 	 */
 	public void setVenDomicilio(BigDecimal venDomicilio) {
 		this.venDomicilio = venDomicilio;
@@ -280,9 +278,10 @@ public class Venta implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param venSaldo the venSaldo to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param venSaldo
+	 *            the venSaldo to set
 	 */
 	public void setVenSaldo(BigDecimal venSaldo) {
 		this.venSaldo = venSaldo;
@@ -298,9 +297,10 @@ public class Venta implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param pagoList the pagoList to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param pagoList
+	 *            the pagoList to set
 	 */
 	public void setPagoList(List<Pago> pagoList) {
 		this.pagoList = pagoList;
@@ -316,9 +316,10 @@ public class Venta implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param terceroVentaList the terceroVentaList to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param terceroVentaList
+	 *            the terceroVentaList to set
 	 */
 	public void setTerceroVentaList(List<TerceroVenta> terceroVentaList) {
 		this.terceroVentaList = terceroVentaList;
@@ -334,9 +335,10 @@ public class Venta implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param ventaLineaList the ventaLineaList to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param ventaLineaList
+	 *            the ventaLineaList to set
 	 */
 	public void setVentaLineaList(List<VentaLinea> ventaLineaList) {
 		this.ventaLineaList = ventaLineaList;
@@ -352,9 +354,10 @@ public class Venta implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param modalidadVenta the modalidadVenta to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param modalidadVenta
+	 *            the modalidadVenta to set
 	 */
 	public void setModalidadVenta(ModalidaVentaEnum modalidadVenta) {
 		this.modalidadVenta = modalidadVenta;
@@ -370,9 +373,10 @@ public class Venta implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param fechaRenovacion the fechaRenovacion to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param fechaRenovacion
+	 *            the fechaRenovacion to set
 	 */
 	public void setFechaRenovacion(Date fechaRenovacion) {
 		this.fechaRenovacion = fechaRenovacion;
@@ -388,9 +392,10 @@ public class Venta implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param descuento the descuento to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param descuento
+	 *            the descuento to set
 	 */
 	public void setDescuento(BigDecimal descuento) {
 		this.descuento = descuento;
@@ -406,26 +411,32 @@ public class Venta implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param cuotas the cuotas to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param cuotas
+	 *            the cuotas to set
 	 */
 	public void setCuotas(List<Cuota> cuotas) {
 		this.cuotas = cuotas;
 	}
+
 	/**
 	 * 
-	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	* @date 15/07/2013
-	* @return
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 15/07/2013
+	 * @return
 	 */
-	public Tercero getFirstTercero(){
-		if (terceroVentaList!=null) {
+	public Tercero getFirstTercero() {
+		if (terceroVentaList != null) {
 			if (!terceroVentaList.isEmpty()) {
 				return terceroVentaList.get(0).getTerceroidTecero();
-			}else{return null;}
-		}else{return null;}
-		
+			} else {
+				return null;
+			}
+		} else {
+			return null;
+		}
+
 	}
 
 	/**
@@ -438,9 +449,10 @@ public class Venta implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param seleccionado the seleccionado to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param seleccionado
+	 *            the seleccionado to set
 	 */
 	public void setSeleccionado(boolean seleccionado) {
 		this.seleccionado = seleccionado;
@@ -456,15 +468,13 @@ public class Venta implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param estadoVenta the estadoVenta to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param estadoVenta
+	 *            the estadoVenta to set
 	 */
 	public void setEstadoVenta(EstadoVentaEnum estadoVenta) {
 		this.estadoVenta = estadoVenta;
 	}
-	
-	
-
 
 }

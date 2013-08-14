@@ -18,14 +18,14 @@ import co.com.rentavoz.logica.jpa.entidades.almacen.VentaLinea;
 
 /**
  * 
-* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-* @project co.com.rentavoz.model.jpa
-* @class VentaLineaFacade
-* @date 14/07/2013
-*
+ * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+ * @project co.com.rentavoz.model.jpa
+ * @class VentaLineaFacade
+ * @date 14/07/2013
+ * 
  */
 @Stateless
-public class VentaLineaFacade extends AbstractFacade<VentaLinea>  {
+public class VentaLineaFacade extends AbstractFacade<VentaLinea> {
 	/**
 	 * 
 	 */
@@ -40,30 +40,34 @@ public class VentaLineaFacade extends AbstractFacade<VentaLinea>  {
 
 	/**
 	 * 
-	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	* @date 14/07/2013
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 14/07/2013
 	 */
 	public VentaLineaFacade() {
 		super(VentaLinea.class);
 	}
+
 	/**
 	 * 
-	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	* @date 17/07/2013
-	* @param start
-	* @param end
-	* @return
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 17/07/2013
+	 * @param start
+	 * @param end
+	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<VentaLinea> buscarLineasPorRenovar(Date start , Date end) {
+	public List<VentaLinea> buscarLineasPorRenovar(Date start, Date end) {
 		Query q = getEntityManager()
 				.createQuery(
 						"SELECT vl FROM VentaLinea vl WHERE vl.ventaidVenta.modalidadVenta = :modalidadVenta AND vl.fechaRenovacion BETWEEN :start AND :end  AND vl.lineaidLinea.estadoLineaidEstadoLinea = :estado");
 		q.setParameter("modalidadVenta", ModalidaVentaEnum.VENTA);
 		q.setParameter("start", start);
 		q.setParameter("end", end);
-		q.setParameter("estado", (EstadoLinea)getEm().find(EstadoLinea.class, ESTADO_LINEA_ACTIVA));
-		 List<VentaLinea> resultList = q.getResultList();
+		q.setParameter(
+				"estado",
+				(EstadoLinea) getEm().find(EstadoLinea.class,
+						ESTADO_LINEA_ACTIVA));
+		List<VentaLinea> resultList = q.getResultList();
 		return resultList;
 	}
 
@@ -77,12 +81,13 @@ public class VentaLineaFacade extends AbstractFacade<VentaLinea>  {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param em the em to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param em
+	 *            the em to set
 	 */
 	public void setEm(EntityManager em) {
 		this.em = em;
 	}
-	
+
 }

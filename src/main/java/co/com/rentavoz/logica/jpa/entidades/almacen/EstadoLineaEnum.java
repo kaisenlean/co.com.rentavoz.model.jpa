@@ -8,23 +8,25 @@ package co.com.rentavoz.logica.jpa.entidades.almacen;
  * @project co.com.rentavoz.model.jpa
  * @class EstadoLineaEnum
  * @date 23/07/2013
- *
+ * 
  */
 public enum EstadoLineaEnum {
 
 	/**
-	 * co.com.rentavoz.logica.jpa.entidades.almacen
-	 * co.com.rentavoz.model.jpa
+	 * co.com.rentavoz.logica.jpa.entidades.almacen co.com.rentavoz.model.jpa
+	 * 
 	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
 	 */
-	DISPONIBLE,/**
+	DISPONIBLE, /**
 	 * co.com.rentavoz.logica.jpa.entidades.almacen
 	 * co.com.rentavoz.model.jpa
+	 * 
 	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
 	 */
-	VENDIDA,/**
+	VENDIDA, /**
 	 * co.com.rentavoz.logica.jpa.entidades.almacen
 	 * co.com.rentavoz.model.jpa
+	 * 
 	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
 	 */
 	REPOSICION

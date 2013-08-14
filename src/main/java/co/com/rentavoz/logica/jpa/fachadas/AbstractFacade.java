@@ -8,13 +8,14 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
+
 /**
  * 
-* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-* @project co.com.rentavoz.model.jpa
-* @class AbstractFacade
-* @date 28/06/2013
-*
+ * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+ * @project co.com.rentavoz.model.jpa
+ * @class AbstractFacade
+ * @date 28/06/2013
+ * 
  */
 
 public abstract class AbstractFacade<T> implements Facade<T> {
@@ -44,11 +45,11 @@ public abstract class AbstractFacade<T> implements Facade<T> {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public List<T> findAll() {
-	CriteriaQuery cq = getEntityManager()
-				.getCriteriaBuilder().createQuery();
-		
+		CriteriaQuery cq = getEntityManager().getCriteriaBuilder()
+				.createQuery();
+
 		cq.select(cq.from(entityClass));
-		
+
 		return getEntityManager().createQuery(cq).getResultList();
 	}
 

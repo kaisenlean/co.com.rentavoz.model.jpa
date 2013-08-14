@@ -8,9 +8,9 @@ package co.com.rentavoz.logica.jpa.entidades;
  * @project co.com.rentavoz.model.jpa
  * @class TipoTerceroEnum
  * @date 24/07/2013
- *
+ * 
  */
 public enum TipoTerceroEnum {
-	CLIENTE_MINORISTA,CLIENTE_MAYORISTA,VENDEDOR,CAJERO,ADMINISTRADOR
+	CLIENTE_MINORISTA, CLIENTE_MAYORISTA, VENDEDOR, CAJERO, ADMINISTRADOR
 
 }

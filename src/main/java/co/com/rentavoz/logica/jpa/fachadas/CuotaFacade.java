@@ -31,13 +31,13 @@ public class CuotaFacade extends AbstractFacade<Cuota> {
 		super(Cuota.class);
 	}
 
-/**
- * 
-* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-* @date 15/07/2013
-* @param venta
-* @return
- */
+	/**
+	 * 
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 15/07/2013
+	 * @param venta
+	 * @return
+	 */
 	public boolean cuotasActivas(Venta venta) {
 		Query query = getEntityManager()
 				.createQuery(

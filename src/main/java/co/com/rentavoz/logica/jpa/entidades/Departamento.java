@@ -38,7 +38,7 @@ public class Departamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "idDepartamento")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idDepartamento;
 	@Basic(optional = false)
 	@NotNull

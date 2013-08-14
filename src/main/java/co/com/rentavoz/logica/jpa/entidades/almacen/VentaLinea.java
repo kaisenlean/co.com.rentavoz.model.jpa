@@ -24,7 +24,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
-
 /**
  * 
  * @author ejody
@@ -65,28 +64,29 @@ public class VentaLinea implements Serializable {
 	@ManyToOne(optional = false)
 	private Venta ventaidVenta;
 
-
-
-	@Column(name="domicilio")
+	@Column(name = "domicilio")
 	private Double domicilio;
-	
+
 	@Column(name = "fecha_renovacion")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaRenovacion;
-	
+
+	@Column(name = "descuento")
+	private Double descuento;
+
 	/**
 	 * 
-	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	* @date 14/07/2013
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 14/07/2013
 	 */
 	public VentaLinea() {
 	}
 
 	/**
 	 * 
-	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	* @date 14/07/2013
-	* @param idVentaLinea
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 14/07/2013
+	 * @param idVentaLinea
 	 */
 	public VentaLinea(Integer idVentaLinea) {
 		this.idVentaLinea = idVentaLinea;
@@ -94,12 +94,12 @@ public class VentaLinea implements Serializable {
 
 	/**
 	 * 
-	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	* @date 14/07/2013
-	* @param idVentaLinea
-	* @param ventLinPrecio
-	* @param ventLinTipo
-	* @param ventLinDeposito
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 14/07/2013
+	 * @param idVentaLinea
+	 * @param ventLinPrecio
+	 * @param ventLinTipo
+	 * @param ventLinDeposito
 	 */
 	public VentaLinea(Integer idVentaLinea, BigDecimal ventLinPrecio,
 			int ventLinTipo, BigDecimal ventLinDeposito) {
@@ -148,9 +148,10 @@ public class VentaLinea implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param idVentaLinea the idVentaLinea to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param idVentaLinea
+	 *            the idVentaLinea to set
 	 */
 	public void setIdVentaLinea(Integer idVentaLinea) {
 		this.idVentaLinea = idVentaLinea;
@@ -166,9 +167,10 @@ public class VentaLinea implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param ventLinPrecio the ventLinPrecio to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param ventLinPrecio
+	 *            the ventLinPrecio to set
 	 */
 	public void setVentLinPrecio(BigDecimal ventLinPrecio) {
 		this.ventLinPrecio = ventLinPrecio;
@@ -184,9 +186,10 @@ public class VentaLinea implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param ventLinTipo the ventLinTipo to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param ventLinTipo
+	 *            the ventLinTipo to set
 	 */
 	public void setVentLinTipo(int ventLinTipo) {
 		this.ventLinTipo = ventLinTipo;
@@ -202,9 +205,10 @@ public class VentaLinea implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param ventLinDeposito the ventLinDeposito to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param ventLinDeposito
+	 *            the ventLinDeposito to set
 	 */
 	public void setVentLinDeposito(BigDecimal ventLinDeposito) {
 		this.ventLinDeposito = ventLinDeposito;
@@ -220,9 +224,10 @@ public class VentaLinea implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param lineaidLinea the lineaidLinea to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param lineaidLinea
+	 *            the lineaidLinea to set
 	 */
 	public void setLineaidLinea(Linea lineaidLinea) {
 		this.lineaidLinea = lineaidLinea;
@@ -238,9 +243,10 @@ public class VentaLinea implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param ventaidVenta the ventaidVenta to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param ventaidVenta
+	 *            the ventaidVenta to set
 	 */
 	public void setVentaidVenta(Venta ventaidVenta) {
 		this.ventaidVenta = ventaidVenta;
@@ -256,9 +262,10 @@ public class VentaLinea implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param fechaRenovacion the fechaRenovacion to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param fechaRenovacion
+	 *            the fechaRenovacion to set
 	 */
 	public void setFechaRenovacion(Date fechaRenovacion) {
 		this.fechaRenovacion = fechaRenovacion;
@@ -274,16 +281,32 @@ public class VentaLinea implements Serializable {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param domicilio the domicilio to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param domicilio
+	 *            the domicilio to set
 	 */
 	public void setDomicilio(Double domicilio) {
 		this.domicilio = domicilio;
 	}
-	
-	
-	
 
-	
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the descuento
+	 */
+	public Double getDescuento() {
+		return descuento;
+	}
+
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param descuento
+	 *            the descuento to set
+	 */
+	public void setDescuento(Double descuento) {
+		this.descuento = descuento;
+	}
+
 }

@@ -15,6 +15,7 @@ import org.junit.Test;
 import co.com.rentavoz.fachadas.BaseFacadeTest;
 import co.com.rentavoz.logica.jpa.entidades.almacen.VentaLinea;
 import co.com.rentavoz.logica.jpa.fachadas.VentaLineaFacade;
+
 /**
  * 
  * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
@@ -24,21 +25,18 @@ import co.com.rentavoz.logica.jpa.fachadas.VentaLineaFacade;
  * 
  */
 
-public class VentaLineaFacadeTest extends BaseFacadeTest  {
+public class VentaLineaFacadeTest extends BaseFacadeTest {
 
-	
-
-
-	private   VentaLineaFacade ventaLineaFacade;
-
+	private VentaLineaFacade ventaLineaFacade;
 
 	/**
 	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
 	 * @date 17/07/2013
 	 */
 	public VentaLineaFacadeTest() {
-		
+
 	}
+
 	/**
 	 * 
 	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
@@ -49,14 +47,14 @@ public class VentaLineaFacadeTest extends BaseFacadeTest  {
 
 		ventaLineaFacade = new VentaLineaFacade();
 		ventaLineaFacade.setEm(getEm());
-		
-		Calendar calendario= Calendar.getInstance();
+
+		Calendar calendario = Calendar.getInstance();
 		calendario.set(Calendar.MONTH, 06);
 		calendario.set(Calendar.DAY_OF_MONTH, 01);
-		List<VentaLinea> ventaLineas=ventaLineaFacade.buscarLineasPorRenovar(calendario.getTime(), new Date()
-		);
+		List<VentaLinea> ventaLineas = ventaLineaFacade.buscarLineasPorRenovar(
+				calendario.getTime(), new Date());
 		assertNotNull(ventaLineas);
-		
+
 	}
-	
+
 }

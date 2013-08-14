@@ -54,15 +54,17 @@ public class VentaFacade extends AbstractFacade<Venta> {
 
 	}
 
-	
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see co.com.rentavoz.logica.jpa.fachadas.AbstractFacade#findAll()
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Venta> findAll() {
-	Query query = getEntityManager().createQuery("SELECT v FROM Venta v WHERE v.estadoVenta = :estado");
-	query.setParameter(FIELD_ESTADO, ESTADO_VENTA_ACTIVA);
-	return query.getResultList();
+		Query query = getEntityManager().createQuery(
+				"SELECT v FROM Venta v WHERE v.estadoVenta = :estado");
+		query.setParameter(FIELD_ESTADO, ESTADO_VENTA_ACTIVA);
+		return query.getResultList();
 	}
 }

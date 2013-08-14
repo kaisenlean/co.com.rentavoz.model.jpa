@@ -93,8 +93,6 @@ public class Plan implements Serializable {
 	@JoinColumn(name = "Operador_idOperador", referencedColumnName = "idOperador")
 	@ManyToOne(optional = false)
 	private Operador operadoridOperador;
-	
-	
 
 	public Plan() {
 	}
@@ -214,11 +212,12 @@ public class Plan implements Serializable {
 		this.operadoridOperador = operadoridOperador;
 	}
 
-	
-	public String getVencimiento(){
-		return new SimpleDateFormat("dd/MM/yyyy").format(plaFechaVenc).toString();
-		
+	public String getVencimiento() {
+		return new SimpleDateFormat("dd/MM/yyyy").format(plaFechaVenc)
+				.toString();
+
 	}
+
 	@Override
 	public int hashCode() {
 		int hash = 0;

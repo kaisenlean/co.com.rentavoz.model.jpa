@@ -44,7 +44,7 @@ import co.com.rentavoz.logica.jpa.entidades.profile.Usuario;
 		@NamedQuery(name = "Tercero.findByTerApellidos", query = "SELECT t FROM Tercero t WHERE t.terApellidos = :terApellidos"),
 		@NamedQuery(name = "Tercero.findByTerTelefono", query = "SELECT t FROM Tercero t WHERE t.terTelefono = :terTelefono"),
 		@NamedQuery(name = "Tercero.findByTerDireccion", query = "SELECT t FROM Tercero t WHERE t.terDireccion = :terDireccion"),
-		@NamedQuery(name = "Tercero.findByTerDocumento", query = "SELECT t FROM Tercero t WHERE t.terDocumento = :terDocumento")})
+		@NamedQuery(name = "Tercero.findByTerDocumento", query = "SELECT t FROM Tercero t WHERE t.terDocumento = :terDocumento") })
 public class Tercero implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -73,9 +73,9 @@ public class Tercero implements Serializable {
 	@NotNull
 	@Column(name = "terDocumento")
 	private int terDocumento;
-	
+
 	@Enumerated(EnumType.STRING)
-	@Column(name="tipo")
+	@Column(name = "tipo")
 	private TipoTerceroEnum tipo;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "terceroidTecero")
@@ -90,11 +90,10 @@ public class Tercero implements Serializable {
 	@Transient
 	private String repTerClave;
 
-	
-	@JoinColumn(name="usuario",referencedColumnName="usuario")
+	@JoinColumn(name = "usuario", referencedColumnName = "usuario")
 	@ManyToOne
 	private Usuario usuario;
-	
+
 	public Tercero() {
 	}
 
@@ -109,7 +108,7 @@ public class Tercero implements Serializable {
 		this.terTelefono = terTelefono;
 		this.terDireccion = terDireccion;
 		this.terDocumento = terDocumento;
-		
+
 	}
 
 	public Integer getIdTecero() {
@@ -160,8 +159,6 @@ public class Tercero implements Serializable {
 		this.terDocumento = terDocumento;
 	}
 
-
-
 	@XmlTransient
 	public List<TerceroVenta> getTerceroVentaList() {
 		return terceroVentaList;
@@ -207,7 +204,7 @@ public class Tercero implements Serializable {
 
 	@Override
 	public boolean equals(Object object) {
-	
+
 		if (!(object instanceof Tercero)) {
 			return false;
 		}
@@ -227,45 +224,54 @@ public class Tercero implements Serializable {
 	public void setRepTerClave(String repTerClave) {
 		this.repTerClave = repTerClave;
 	}
-/**
- * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
- * @date 2/06/2013
- * @return the tipo
- */
-public TipoTerceroEnum getTipo() {
-	return tipo;
-}
 
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the tipo
+	 */
+	public TipoTerceroEnum getTipo() {
+		return tipo;
+	}
 
-/**
- * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
- * @date 2/06/2013
- * @return the usuario
- */
-public Usuario getUsuario() {
-	return usuario;
-}
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the usuario
+	 */
+	public Usuario getUsuario() {
+		return usuario;
+	}
 
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param usuario
+	 *            the usuario to set
+	 */
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
-/**
- *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
- *@date 2/06/2013
- * @param usuario the usuario to set
- */
-public void setUsuario(Usuario usuario) {
-	this.usuario = usuario;
-}
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param tipo
+	 *            the tipo to set
+	 */
+	public void setTipo(TipoTerceroEnum tipo) {
+		this.tipo = tipo;
+	}
 
+	public String getTipoAsString() {
+		if (tipo != null) {
 
+			return tipo.name().replace("_", " ");
+		} else {
+			return "";
+		}
+	}
 
-/**
- *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
- *@date 2/06/2013
- * @param tipo the tipo to set
- */
-public void setTipo(TipoTerceroEnum tipo) {
-	this.tipo = tipo;
-}
 	@Override
 	public String toString() {
 		return terNombre + " " + terApellidos + " [ " + terDocumento + " ]";

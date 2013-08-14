@@ -8,8 +8,8 @@ package co.com.rentavoz.logica.jpa.entidades.almacen;
  * @project co.com.rentavoz.model.jpa
  * @class EstadoCuotaEnum
  * @date 15/07/2013
- *
+ * 
  */
 public enum EstadoCuotaEnum {
-PAGADA,PENDIENTE
+	PAGADA, PENDIENTE
 }
