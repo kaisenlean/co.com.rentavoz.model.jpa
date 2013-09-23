@@ -19,6 +19,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -52,6 +53,11 @@ import co.com.rentavoz.logica.jpa.entidades.TerceroVenta;
 		@NamedQuery(name = "Venta.findByVenDomicilio", query = "SELECT v FROM Venta v WHERE v.venDomicilio = :venDomicilio"),
 		@NamedQuery(name = "Venta.findByVenSaldo", query = "SELECT v FROM Venta v WHERE v.venSaldo = :venSaldo") })
 public class Venta implements Serializable {
+	/**
+	 * co.com.rentavoz.logica.jpa.entidades.almacen
+	 * co.com.rentavoz.model.jpa
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 */
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -105,6 +111,11 @@ public class Venta implements Serializable {
 	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "venta")
 	private List<Cuota> cuotas = new ArrayList<Cuota>();
 
+	
+	@JoinColumn(name="tercero", referencedColumnName="idTecero")
+	private Tercero tercero;
+	
+	
 	@Transient
 	private boolean seleccionado;
 
@@ -476,5 +487,30 @@ public class Venta implements Serializable {
 	public void setEstadoVenta(EstadoVentaEnum estadoVenta) {
 		this.estadoVenta = estadoVenta;
 	}
+	
+	public String getModalidadVentaAsString(){
+		return modalidadVenta.name();
+		
+	
+	}
 
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param tercero the tercero to set
+	 */
+	public void setTercero(Tercero tercero) {
+		this.tercero = tercero;
+	}
+	
+	
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the tercero
+	 */
+	public Tercero getTercero() {
+		return tercero;
+	}
+	
 }

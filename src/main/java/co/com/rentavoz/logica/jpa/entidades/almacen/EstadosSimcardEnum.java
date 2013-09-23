@@ -12,5 +12,5 @@ package co.com.rentavoz.logica.jpa.entidades.almacen;
  */
 public enum EstadosSimcardEnum {
 
-	DISPONIBLE, ASIGNADA, INACTIVA,EN_BLANCO,DESECHADA
+	ASIGNADA,EN_BLANCO,DESECHADA
 }

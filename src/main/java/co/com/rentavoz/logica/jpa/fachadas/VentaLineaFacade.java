@@ -29,7 +29,7 @@ public class VentaLineaFacade extends AbstractFacade<VentaLinea> {
 	/**
 	 * 
 	 */
-	private static final int ESTADO_LINEA_ACTIVA = 1;
+	private static final int ESTADO_LINEA_ACTIVA = 4;
 	@PersistenceContext(unitName = "com.innovate.rentavozPU")
 	private EntityManager em;
 
@@ -70,6 +70,9 @@ public class VentaLineaFacade extends AbstractFacade<VentaLinea> {
 		List<VentaLinea> resultList = q.getResultList();
 		return resultList;
 	}
+
+	
+	
 
 	/**
 	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>

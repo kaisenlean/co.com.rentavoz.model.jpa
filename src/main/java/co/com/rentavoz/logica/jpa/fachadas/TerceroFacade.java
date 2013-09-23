@@ -84,5 +84,22 @@ public class TerceroFacade extends AbstractFacade<Tercero> implements
 
 		}
 	}
+	
+	/**
+	 * 
+	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	* @date 4/09/2013
+	* @param idCentrope
+	* @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Tercero> findByCentrope(int idCentrope){
+		
+		Query query= getEntityManager().createQuery("SELECT t FROM Tercero t WHERE t.centrope.id = :centrope");
+		query.setParameter("centrope", idCentrope);
+		
+		
+		return query.getResultList();
+	}
 
 }

@@ -4,11 +4,14 @@
  */
 package co.com.rentavoz.logica.jpa.fachadas;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import co.com.rentavoz.logica.jpa.entidades.Tercero;
 import co.com.rentavoz.logica.jpa.entidades.almacen.Cuota;
 import co.com.rentavoz.logica.jpa.entidades.almacen.EstadoCuotaEnum;
 import co.com.rentavoz.logica.jpa.entidades.almacen.Venta;
@@ -51,6 +54,25 @@ public class CuotaFacade extends AbstractFacade<Cuota> {
 			return false;
 
 		}
+
+	}
+
+	/**
+	 * 
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 6/09/2013
+	 * @param tercero
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Cuota> buscarCuotasPorCliente(Tercero tercero) {
+
+		Query query = getEntityManager().createQuery(
+				"SELECT c FROM Cuota c WHERE c.venta.tercero = :tercero ORDER BY c.venta.idVenta ASC ");
+
+		query.setParameter("tercero", tercero);
+
+		return query.getResultList();
 
 	}
 

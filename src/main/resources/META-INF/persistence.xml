@@ -3,6 +3,10 @@
   <persistence-unit name="com.innovate.rentavozPU" transaction-type="JTA">
     <jta-data-source>jdbc/minutos</jta-data-source>
     <mapping-file>META-INF/eclipselink-orm.xml</mapping-file>
+    <class>co.com.rentavoz.logica.jpa.entidades.tareas.Tarea</class>
+    <class>co.com.rentavoz.logica.jpa.entidades.Centrope</class>
+    <class>co.com.rentavoz.logica.jpa.entidades.almacen.Reposiciondll</class>
+    <class>co.com.rentavoz.logica.jpa.entidades.caja.Caja</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <shared-cache-mode>NONE</shared-cache-mode>
 <!--     <properties> -->

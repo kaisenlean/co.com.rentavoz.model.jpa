@@ -24,6 +24,12 @@ public class LineaFacade extends AbstractFacade<Linea> {
 	 * co.com.rentavoz.model.jpa
 	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
 	 */
+	private static final int ESTADO_LINEA_DISPONIBLE_CON_USO = 1;
+	/**
+	 * co.com.rentavoz.logica.jpa.fachadas
+	 * co.com.rentavoz.model.jpa
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 */
 	private static final int ESTADO_LINEA_DISPONIBLE_USO = 4;
 	private static final Integer ESTADO_LINEA_ACTIVO = 1;
 	@PersistenceContext(unitName = "com.innovate.rentavozPU")
@@ -126,11 +132,29 @@ public class LineaFacade extends AbstractFacade<Linea> {
 				.createQuery(
 						"SELECT l FROM Linea l WHERE l.estadoLineaidEstadoLinea.idEstadoLinea = :estado");
 		query.setParameter("estado", ESTADO_LINEA_ACTIVO);
+		
 		query.setFirstResult(startingAt);
 		query.setMaxResults(maxPerPage);
 
 		return query.getResultList();
 	}
+	
+	
+	@SuppressWarnings("unchecked")
+	public List<Linea> findPlayers2(int startingAt, int maxPerPage) {
+
+		// regular query that will search for players in the db
+		Query query = getEntityManager()
+				.createQuery(
+						"SELECT l FROM Linea l WHERE l.estadoLineaidEstadoLinea.idEstadoLinea = :estado  OR l.estadoLineaidEstadoLinea.idEstadoLinea = :estado2");
+		query.setParameter("estado", ESTADO_LINEA_ACTIVO);
+		query.setParameter("estado2", ESTADO_LINEA_DISPONIBLE_CON_USO);
+		query.setFirstResult(startingAt);
+		query.setMaxResults(maxPerPage);
+
+		return query.getResultList();
+	}
+
 
 	/**
 	 * 
@@ -162,7 +186,7 @@ public class LineaFacade extends AbstractFacade<Linea> {
 	@SuppressWarnings("unchecked")
 	public List<Linea> findByCriteria(String query) {
 		Query q = getEntityManager().createQuery(
-				"SELECT l FROM Linea l WHERE l.linNumero LIKE :query AND  l.estadoLineaidEstadoLinea.idEstadoLinea = :estado ");
+				"SELECT l FROM Linea l WHERE l.linNumero LIKE :query AND  l.estadoLineaidEstadoLinea.idEstadoLinea = :estado");
 		q.setParameter("query", "%" + query + "%");
 		q.setParameter("estado", ESTADO_LINEA_ACTIVO);
 		return q.getResultList();

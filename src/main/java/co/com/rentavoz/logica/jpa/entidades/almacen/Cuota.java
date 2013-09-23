@@ -19,6 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
@@ -30,6 +31,20 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "cuota")
 public class Cuota implements Serializable {
+
+	/**
+	 * co.com.rentavoz.logica.jpa.entidades.almacen
+	 * co.com.rentavoz.model.jpa
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 */
+	private static final String SPACE = " ";
+
+	/**
+	 * co.com.rentavoz.logica.jpa.entidades.almacen
+	 * co.com.rentavoz.model.jpa
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 */
+	private static final String UNDERLINE = "_";
 
 	private static final long serialVersionUID = 1L;
 
@@ -52,6 +67,10 @@ public class Cuota implements Serializable {
 	@Column(name = "fecha_pago")
 	@Temporal(TemporalType.DATE)
 	private Date fechaPago;
+	
+	
+	@Transient
+	private boolean seleccionada;
 
 	/**
 	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
@@ -183,4 +202,47 @@ public class Cuota implements Serializable {
 		this.fechaPago = fechaPago;
 	}
 
+	/**
+	 * 
+	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	* @date 6/09/2013
+	* @return
+	 */
+	public String estadoCuotaAsString(){
+		
+	return estadoCuota.name().replace(UNDERLINE, SPACE);	
+	}
+	
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the seleccionada
+	 */
+	public boolean isSeleccionada() {
+		return seleccionada;
+	}
+	
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param seleccionada the seleccionada to set
+	 */
+	public void setSeleccionada(boolean seleccionada) {
+		this.seleccionada = seleccionada;
+	}
+	/**
+	 * 
+	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	* @date 6/09/2013
+	* @return
+	 */
+	public boolean isPagada(){
+		if (estadoCuota.equals(EstadoCuotaEnum.PAGADA)) {
+			return true;
+		}else{
+			return false;
+			
+		}
+		
+	}
 }

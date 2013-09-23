@@ -139,8 +139,7 @@ public class Simcard implements Serializable {
 
 	@Override
 	public String toString() {
-		return "com.invte.rentavoz.logica.entidades.Simcard[ idSimcard="
-				+ idSimcard + " ]";
+		return simIccid;
 	}
 
 	/**

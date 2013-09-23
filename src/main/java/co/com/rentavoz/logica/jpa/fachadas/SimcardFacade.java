@@ -42,7 +42,7 @@ public class SimcardFacade extends AbstractFacade<Simcard> {
 		Query query = getEntityManager()
 				.createQuery(
 						"SELECT s FROM Simcard s WHERE s.simEstado = :estado AND s.simIccid LIKE :criterio ");
-		query.setParameter("estado", EstadosSimcardEnum.DISPONIBLE);
+		query.setParameter("estado", EstadosSimcardEnum.EN_BLANCO);
 		query.setParameter("criterio", "%" + criteria + "%");
 
 		return query.getResultList();
@@ -68,4 +68,15 @@ public class SimcardFacade extends AbstractFacade<Simcard> {
 		}
 	}
 
+	
+	@SuppressWarnings("unchecked")
+	public List<Simcard> getByScId(String simIccid) throws Exception {
+		Query query = getEntityManager().createQuery(
+				"SELECT s FROM Simcard s WHERE s.simIccid LIKE :id AND s.simEstado = :estado");
+		query.setParameter("id", "%"+simIccid+"%");
+		query.setParameter("estado", EstadosSimcardEnum.EN_BLANCO);
+		
+
+	return query.getResultList();
+	}
 }
