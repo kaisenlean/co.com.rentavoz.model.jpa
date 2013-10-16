@@ -27,7 +27,11 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * 
- * @author ejody
+* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+* @project co.com.rentavoz.model.jpa
+* @class Sucursal
+* @date 7/10/2013
+*
  */
 @Entity
 @Table(name = "Sucursal")
@@ -174,8 +178,6 @@ public class Sucursal implements Serializable {
 
 	@Override
 	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are
-		// not set
 		if (!(object instanceof Sucursal)) {
 			return false;
 		}
@@ -190,8 +192,7 @@ public class Sucursal implements Serializable {
 
 	@Override
 	public String toString() {
-		return "com.invte.rentavoz.logica.entidades.Sucursal[ idSucursal="
-				+ idSucursal + " ]";
+		return sucNombre;
 	}
 
 }

@@ -13,11 +13,16 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import co.com.rentavoz.logica.jpa.entidades.Tercero;
+import co.com.rentavoz.logica.jpa.entidades.TipoTerceroEnum;
 import co.com.rentavoz.logica.jpa.entidades.profile.Usuario;
 
 /**
  * 
- * @author ejody
+* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+* @project co.com.rentavoz.model.jpa
+* @class TerceroFacade
+* @date 6/10/2013
+*
  */
 @Stateless
 public class TerceroFacade extends AbstractFacade<Tercero> implements
@@ -100,6 +105,22 @@ public class TerceroFacade extends AbstractFacade<Tercero> implements
 		
 		
 		return query.getResultList();
+	}
+
+	/**
+	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	* @date 6/10/2013
+	* @param criterio
+	* @return
+	*/
+	@SuppressWarnings("unchecked")
+	public List<Tercero> findByCriterioProveedor(String criterio) {
+		Query q = getEntityManager()
+				.createQuery(
+						"SELECT t FROM Tercero t WHERE t.tipo = :tipoTercero AND  t.terApellidos LIKE :criterio OR t.terNombre LIKE :criterio  OR t.terDocumento LIKE :criterio");
+		q.setParameter("criterio", "%" + criterio + "%");
+		q.setParameter("tipoTercero",  TipoTerceroEnum.PROVEEDOR);
+		return q.getResultList();
 	}
 
 }

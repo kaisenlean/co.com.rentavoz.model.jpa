@@ -95,6 +95,28 @@ public class LineaFacade extends AbstractFacade<Linea> {
 		}
 
 	}
+	
+	/**
+	 * 
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 29/07/2013
+	 * @param linNumero
+	 * @return
+	 */
+	public Linea findByNumeroObjeto(String linNumero) {
+		Query q = getEntityManager().createQuery(
+				"SELECT l FROM Linea l WHERE l.linNumero = :numero ");
+		q.setParameter("numero", linNumero);
+		q.setMaxResults(1);
+		if (q.getResultList().isEmpty()) {
+			return null;
+		} else if (q.getSingleResult() != null) {
+			return (Linea) q.getSingleResult();
+		} else {
+			return null;
+		}
+
+	}
 
 	/**
 	 * 

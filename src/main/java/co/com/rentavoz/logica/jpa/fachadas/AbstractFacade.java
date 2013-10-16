@@ -18,7 +18,7 @@ import javax.persistence.criteria.CriteriaQuery;
  * 
  */
 
-public abstract class AbstractFacade<T> implements Facade<T> {
+public abstract class AbstractFacade<T> {
 	private Class<T> entityClass;
 
 	public AbstractFacade(Class<T> entityClass) {
