@@ -25,7 +25,14 @@ public class BodegaExistencia implements Serializable {
 
 	@Column(name="bar_code", length=255)
 	private String barCode;
+	
 
+	@Column(name="bar_code2")
+	private String barCode2;
+
+
+	@Column(name="bar_code3")
+	private String barCode3;
 	//bi-directional many-to-one association to BodegaItem
 	@ManyToOne
 	@JoinColumn(name="bodega_item")
@@ -190,6 +197,47 @@ public class BodegaExistencia implements Serializable {
 	 */
 	public void setSucursal(Sucursal sucursal) {
 		this.sucursal = sucursal;
+	}
+	
+	public String getEstadoAsString(){
+		return estado.name();
+		
+	}
+	
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the barCode2
+	 */
+	public String getBarCode2() {
+		return barCode2;
+	}
+	
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the barCode3
+	 */
+	public String getBarCode3() {
+		return barCode3;
+	}
+	
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param barCode2 the barCode2 to set
+	 */
+	public void setBarCode2(String barCode2) {
+		this.barCode2 = barCode2;
+	}
+	
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param barCode3 the barCode3 to set
+	 */
+	public void setBarCode3(String barCode3) {
+		this.barCode3 = barCode3;
 	}
 
 }

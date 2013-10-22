@@ -18,7 +18,11 @@ import co.com.rentavoz.logica.jpa.fachadas.AbstractFacade;
 
 /**
  * 
- * @author ejody
+* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+* @project co.com.rentavoz.model.jpa
+* @class BodegaSalidaFacade
+* @date 16/10/2013
+*
  */
 @Stateless
 public class BodegaSalidaFacade extends AbstractFacade<BodegaSalida> {

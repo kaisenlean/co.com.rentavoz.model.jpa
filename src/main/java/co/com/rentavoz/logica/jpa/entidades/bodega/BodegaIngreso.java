@@ -50,6 +50,10 @@ public class BodegaIngreso implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="proveedor")
 	private Tercero proveedor;
+	
+	@Column(name="consecutivo_factura")
+	private String consecutivoFactura;
+	
 
 	//bi-directional many-to-one association to BodegaExistencia
 	@OneToMany(mappedBy="bodegaIngreso", cascade={CascadeType.ALL})
@@ -159,6 +163,23 @@ public class BodegaIngreso implements Serializable {
 	 */
 	public void setSucursal(Sucursal sucursal) {
 		this.sucursal = sucursal;
+	}
+	
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the consecutivoFactura
+	 */
+	public String getConsecutivoFactura() {
+		return consecutivoFactura;
+	}
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param consecutivoFactura the consecutivoFactura to set
+	 */
+	public void setConsecutivoFactura(String consecutivoFactura) {
+		this.consecutivoFactura = consecutivoFactura;
 	}
 
 }

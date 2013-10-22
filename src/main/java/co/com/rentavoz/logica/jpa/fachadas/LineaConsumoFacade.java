@@ -39,7 +39,7 @@ public class LineaConsumoFacade extends AbstractFacade<LineaConsumo> {
 	public List<LineaConsumo> consultarConsumoActual(Linea linea) {
 		Query query = getEntityManager()
 				.createQuery(
-						"SELECT lc FROM LineaConsumo lc WHERE lc.linea = :line ORDER BY lc.fecha ASC");
+						"SELECT lc FROM LineaConsumo lc WHERE lc.linea = :line ORDER BY lc.fecha DESC");
 		query.setParameter("line", linea);
 		return query.getResultList();
 

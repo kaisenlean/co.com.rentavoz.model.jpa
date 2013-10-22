@@ -4,6 +4,8 @@
  */
 package co.com.rentavoz.logica.jpa.fachadas.bodega;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,12 +13,17 @@ import javax.persistence.Query;
 
 import co.com.rentavoz.logica.jpa.entidades.Sucursal;
 import co.com.rentavoz.logica.jpa.entidades.bodega.BodegaExistencia;
+import co.com.rentavoz.logica.jpa.entidades.bodega.BodegaItem;
 import co.com.rentavoz.logica.jpa.entidades.bodega.EstadoExistenciaEnum;
 import co.com.rentavoz.logica.jpa.fachadas.AbstractFacade;
 
 /**
  * 
- * @author ejody
+* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+* @project co.com.rentavoz.model.jpa
+* @class BodegaExistenciaFacade
+* @date 21/10/2013
+*
  */
 @Stateless
 public class BodegaExistenciaFacade extends AbstractFacade<BodegaExistencia> {
@@ -113,7 +120,14 @@ public class BodegaExistenciaFacade extends AbstractFacade<BodegaExistencia> {
 	}
 	
 	
-	
+	/**
+	 * 
+	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	* @date 21/10/2013
+	* @param productoId
+	* @param sucursal
+	* @return
+	 */
 	public BodegaExistencia findByBarcodeActivo(String productoId,Sucursal sucursal) {
 		Query query = getEntityManager()
 				.createQuery(
@@ -132,6 +146,26 @@ public class BodegaExistenciaFacade extends AbstractFacade<BodegaExistencia> {
 
 			return (BodegaExistencia) query.getSingleResult();
 		}
+	}
+	/**
+	 * 
+	* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	* @date 21/10/2013
+	* @param sucursal
+	* @param bodegaItem
+	* @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<BodegaExistencia> findByItemAndSucursal(Sucursal sucursal, BodegaItem bodegaItem){
+		
+		Query query = getEntityManager().createQuery("SELECT b FROM BodegaExistencia b WHERE b.bodegaItemBean = :item AND b.sucursal = :sucursal");
+		
+		query.setParameter("item", bodegaItem);
+		query.setParameter("sucursal", sucursal);
+		
+		return query.getResultList();
+		
+		
 	}
 
 }

@@ -31,6 +31,10 @@ public class BodegaSalida implements Serializable {
 
 	@Column(name="nro_factura", length=155)
 	private String nroFactura;
+	
+	
+	@Column(name="recibe")
+	private String recibe;
 
 	@Column(length=255)
 	private String observacion;
@@ -119,4 +123,21 @@ public class BodegaSalida implements Serializable {
 		return bodegaSalidaReferencia;
 	}
 
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the recibe
+	 */
+	public String getRecibe() {
+		return recibe;
+	}
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param recibe the recibe to set
+	 */
+	public void setRecibe(String recibe) {
+		this.recibe = recibe;
+	}
+	
 }
