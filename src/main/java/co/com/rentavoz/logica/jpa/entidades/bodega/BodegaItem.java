@@ -59,6 +59,9 @@ public class BodegaItem implements Serializable {
 
 	
 	@Transient
+	private double valorTotalEstimado;
+	
+	@Transient
 	private int contadorImei;
 
 	
@@ -255,4 +258,20 @@ public class BodegaItem implements Serializable {
 		this.contadorImei = contadorImei;
 	}
 
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the valorTotalEstimado
+	 */
+	public double getValorTotalEstimado() {
+		return valorTotalEstimado;
+	}
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param valorTotalEstimado the valorTotalEstimado to set
+	 */
+	public void setValorTotalEstimado(double valorTotalEstimado) {
+		this.valorTotalEstimado = valorTotalEstimado;
+	}
 }

@@ -12,5 +12,5 @@ package co.com.rentavoz.logica.jpa.entidades.bodega;
  */
 public enum EstadoExistenciaEnum {
 
-	DISPONIBLE,NO_DISPONIBLE
+	DISPONIBLE,NO_DISPONIBLE,VENDIDO
 }

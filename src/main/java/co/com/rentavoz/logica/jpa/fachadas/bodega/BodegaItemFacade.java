@@ -86,4 +86,6 @@ public class BodegaItemFacade extends AbstractFacade<BodegaItem> {
 		return (BodegaItem) query.getSingleResult();
 
 	}
+	
+
 }

@@ -87,8 +87,6 @@ public class Tercero implements Serializable {
 	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
 	 */
 	@Basic(optional = false)
-	@NotNull
-	@Size(min = 1, max = 45)
 	@Column(name = "terTelefono")
 	private String terTelefono;
 	/**
@@ -97,8 +95,6 @@ public class Tercero implements Serializable {
 	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
 	 */
 	@Basic(optional = false)
-	@NotNull
-	@Size(min = 1, max = 45)
 	@Column(name = "terDireccion")
 	private String terDireccion;
 	/**
@@ -107,7 +103,6 @@ public class Tercero implements Serializable {
 	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
 	 */
 	@Basic(optional = false)
-	@NotNull
 	@Column(name = "terDocumento")
 	private int terDocumento;
 

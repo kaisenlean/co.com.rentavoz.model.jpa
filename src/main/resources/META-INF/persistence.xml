@@ -13,6 +13,9 @@
     <class>co.com.rentavoz.logica.jpa.entidades.bodega.BodegaSalida</class>
     <class>co.com.rentavoz.logica.jpa.entidades.bodega.BodegaSalidaReferencia</class>
     <class>co.com.rentavoz.logica.jpa.entidades.almacen.LineaConsumo</class>
+    <class>co.com.rentavoz.logica.jpa.entidades.venta.existencia.VentaItem</class>
+    <class>co.com.rentavoz.logica.jpa.entidades.venta.existencia.VentaItemDetalleItem</class>
+    <class>co.com.rentavoz.logica.jpa.entidades.venta.existencia.VentaItemCuota</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <shared-cache-mode>NONE</shared-cache-mode>
 <!--     <properties> -->
