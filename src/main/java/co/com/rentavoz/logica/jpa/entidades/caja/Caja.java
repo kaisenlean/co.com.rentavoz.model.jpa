@@ -1,12 +1,20 @@
 package co.com.rentavoz.logica.jpa.entidades.caja;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import co.com.rentavoz.logica.jpa.entidades.profile.Usuario;
+
 import java.util.Date;
 
 /**
- * The persistent class for the caja database table.
  * 
+* @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+* @project co.com.rentavoz.model.jpa
+* @class Caja
+* @date 30/10/2013
+*
  */
 @Entity
 @Table(name = "caja")
@@ -23,7 +31,8 @@ public class Caja implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
 
-	private String usuario;
+	@JoinColumn(name="usuario")
+	private Usuario usuario;
 
 	public Caja() {
 	}
@@ -63,11 +72,11 @@ public class Caja implements Serializable {
 		this.fecha = fecha;
 	}
 
-	public String getUsuario() {
+	public Usuario getUsuario() {
 		return this.usuario;
 	}
 
-	public void setUsuario(String usuario) {
+	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 
