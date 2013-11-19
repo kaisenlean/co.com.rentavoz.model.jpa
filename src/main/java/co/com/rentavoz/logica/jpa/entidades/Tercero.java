@@ -102,9 +102,8 @@ public class Tercero implements Serializable {
 	 * co.com.rentavoz.model.jpa
 	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
 	 */
-	@Basic(optional = false)
 	@Column(name = "terDocumento")
-	private int terDocumento;
+	private String terDocumento;
 
 	/**
 	 * co.com.rentavoz.logica.jpa.entidades
@@ -193,7 +192,7 @@ public class Tercero implements Serializable {
 	* @param terDocumento
 	*/
 	public Tercero(Integer idTecero, String terNombre, String terTelefono,
-			String terDireccion, int terDocumento) {
+			String terDireccion, String terDocumento) {
 		this.idTecero = idTecero;
 		this.terNombre = terNombre;
 		this.terTelefono = terTelefono;
@@ -297,7 +296,7 @@ public class Tercero implements Serializable {
 	* @date 4/09/2013
 	* @return
 	*/
-	public int getTerDocumento() {
+	public String getTerDocumento() {
 		return terDocumento;
 	}
 
@@ -306,7 +305,7 @@ public class Tercero implements Serializable {
 	* @date 4/09/2013
 	* @param terDocumento
 	*/
-	public void setTerDocumento(int terDocumento) {
+	public void setTerDocumento(String terDocumento) {
 		this.terDocumento = terDocumento;
 	}
 

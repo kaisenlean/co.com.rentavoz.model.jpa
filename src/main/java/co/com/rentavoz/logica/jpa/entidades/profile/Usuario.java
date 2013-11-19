@@ -5,17 +5,22 @@
 package co.com.rentavoz.logica.jpa.entidades.profile;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
+
+import co.com.rentavoz.logica.jpa.entidades.Menu;
+import co.com.rentavoz.logica.jpa.entidades.permiso.Permiso;
 
 /**
  * 
@@ -27,14 +32,9 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "usuario")
-@XmlRootElement
-@NamedQueries({
-		@NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
-		@NamedQuery(name = "Usuario.findByUsuario", query = "SELECT u FROM Usuario u WHERE u.usuario = :usuario"),
-		@NamedQuery(name = "Usuario.findByAdministrador", query = "SELECT u FROM Usuario u WHERE u.administrador = :administrador"),
-		@NamedQuery(name = "Usuario.findByContrasena", query = "SELECT u FROM Usuario u WHERE u.contrasena = :contrasena") })
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@Basic(optional = false)
 	@NotNull
@@ -46,6 +46,22 @@ public class Usuario implements Serializable {
 	@Size(max = 50)
 	@Column(name = "contrasena")
 	private String contrasena;
+	
+	/**
+	 * co.com.rentavoz.logica.jpa.entidades.profile
+	 * co.com.rentavoz.model.jpa
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 */
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+	private List<Permiso> permisos;
+	
+	/**
+	 * co.com.rentavoz.logica.jpa.entidades.profile
+	 * co.com.rentavoz.model.jpa
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 */
+	@Transient
+	private List<Menu> menus = new ArrayList<Menu>();
 
 	/**
 	 * 
@@ -125,8 +141,47 @@ public class Usuario implements Serializable {
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
+	
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the permisos
+	 */
+	public List<Permiso> getPermisos() {
+		return permisos;
+	}
+	
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param permisos the permisos to set
+	 */
+	public void setPermisos(List<Permiso> permisos) {
+		this.permisos = permisos;
+	}
+	
+	
+	
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the menus
+	 */
+	public List<Menu> getMenus() {
+		return menus;
+	}
+	
+	
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param menus the menus to set
+	 */
+	public void setMenus(List<Menu> menus) {
+		this.menus = menus;
+	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see java.lang.Object#hashCode()
@@ -141,7 +196,7 @@ public class Usuario implements Serializable {
 		return result;
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)

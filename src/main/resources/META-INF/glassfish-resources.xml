@@ -9,10 +9,10 @@
     res-type="javax.sql.DataSource" statement-timeout-in-seconds="-1" steady-pool-size="8" validate-atmost-once-period-in-seconds="0" wrap-jdbc-objects="false">
         <property name="serverName" value="localhost" />
         <property name="portNumber" value="3306" />
-        <property name="databaseName" value="MInutos" />
+        <property name="databaseName" value="coinvercol" />
         <property name="User" value="root" />
         <property name="Password" value="jsepee1855" />
-        <property name="URL" value="jdbc:mysql://localhost:3306/Minutos?zeroDateTimeBehavior=convertToNull" />
+        <property name="URL" value="jdbc:mysql://localhost:3306/coinvercol?zeroDateTimeBehavior=convertToNull" />
         <property name="driverClass" value="com.mysql.jdbc.Driver" />
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="jdbc/minutos" object-type="user" pool-name="mysql_kaiselean_rootPool" />

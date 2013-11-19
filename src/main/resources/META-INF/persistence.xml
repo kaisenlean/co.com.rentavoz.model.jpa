@@ -16,10 +16,11 @@
     <class>co.com.rentavoz.logica.jpa.entidades.venta.existencia.VentaItem</class>
     <class>co.com.rentavoz.logica.jpa.entidades.venta.existencia.VentaItemDetalleItem</class>
     <class>co.com.rentavoz.logica.jpa.entidades.venta.existencia.VentaItemCuota</class>
+    <class>co.com.rentavoz.logica.jpa.entidades.permiso.Permiso</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <shared-cache-mode>NONE</shared-cache-mode>
 <!--     <properties> -->
-<!--       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Minutos?zeroDateTimeBehavior=convertToNull"/> -->
+<!--       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/coinvercol?zeroDateTimeBehavior=convertToNull"/> -->
 <!--       <property name="javax.persistence.jdbc.password" value="jsepee1855"/> -->
 <!--       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/> -->
 <!--       <property name="javax.persistence.jdbc.user" value="root"/> -->

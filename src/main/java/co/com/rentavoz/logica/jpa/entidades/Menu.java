@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.com.rentavoz.logica.jpa.entidades;
 
 import java.io.Serializable;
@@ -12,12 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * 
@@ -25,13 +19,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "menu")
-@XmlRootElement
-@NamedQueries({
-		@NamedQuery(name = "Menu.findAll", query = "SELECT m FROM Menu m"),
-		@NamedQuery(name = "Menu.findById", query = "SELECT m FROM Menu m WHERE m.id = :id"),
-		@NamedQuery(name = "Menu.findByLabel", query = "SELECT m FROM Menu m WHERE m.label = :label"),
-		@NamedQuery(name = "Menu.findByIcono", query = "SELECT m FROM Menu m WHERE m.icono = :icono"),
-		@NamedQuery(name = "Menu.findByUrl", query = "SELECT m FROM Menu m WHERE m.url = :url") })
 public class Menu implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -56,6 +43,9 @@ public class Menu implements Serializable {
 	@Column(name = "padre")
 	private String padre;
 
+	@Transient
+	private boolean seleccionado;
+	
 	public Menu() {
 	}
 
@@ -105,6 +95,24 @@ public class Menu implements Serializable {
 		this.url = url;
 	}
 
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the seleccionado
+	 */
+	public boolean isSeleccionado() {
+		return seleccionado;
+	}
+	
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param seleccionado the seleccionado to set
+	 */
+	public void setSeleccionado(boolean seleccionado) {
+		this.seleccionado = seleccionado;
+	}
+	
 	/**
 	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
 	 * @date 2/06/2013
